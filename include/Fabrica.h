@@ -2,6 +2,7 @@
 #define FABRICA_H
 
 #include "IControladorFechaActual.h"
+#include "ICalificarUsuario.h"
 
 class Fabrica {
 private:
@@ -13,6 +14,7 @@ public:
     static Fabrica* getInstance();
 
     IControladorFechaActual* getIControladorFechaActual();
+    ICalificarUsuario* getICalificarUsuario();
 };
 
 #endif

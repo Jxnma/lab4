@@ -12,20 +12,40 @@ Viaje::Viaje(int codigo, DTFecha fecha, std::string origen, std::string destino,
     this->precio = precio;
 }
 
-<<<<<<< HEAD
 Viaje::~Viaje() {}
 
 void Viaje::agregarReserva(Reserva* r) {
     reservas.insert(r);
 }
-Vehiculo* Viaje::getVehiculo() {
-    return vehiculo;
-}
+
 void Viaje::setVehiculo(Vehiculo* v) {
     vehiculo = v;
 }
 int Viaje::getCodigo() const{
-    return codigo;
+    return this->codigo;
+}
+DTFecha Viaje::getFecha(){
+    return this->fecha; 
+}
+std::string Viaje::getOrigen(){ 
+    return this->origen; 
+}
+std::string Viaje::getDestino() { 
+    return this->destino; 
+}
+int Viaje::getAsientosPublicados(){ 
+    return this->asientosPublicados; 
+}
+float Viaje::getPrecio() { 
+    return this->precio; 
+}
+Vehiculo* Viaje::getVehiculo() { 
+    return this->vehiculo; 
+}
+float Viaje::getPrecio() { 
+    return this->precio; 
+}
+bool Viaje::AsientosDisponibles(int asientosSolicitados) {
 }
 
 std::set<DTUsuarioViaje> Viaje::getParticipantes(std::string nicknameCalificador) {
@@ -48,34 +68,3 @@ std::set<DTUsuarioViaje> Viaje::getParticipantes(std::string nicknameCalificador
     
     return resultado;
 }
-=======
-Viaje::~Viaje() {};
-
-int Viaje::getCodigo(){ 
-    return this->codigo; 
-}
-DTFecha Viaje::getFecha(){
-    return this->fecha; 
-}
-std::string Viaje::getOrigen(){ 
-    return this->origen; 
-}
-std::string Viaje::getDestino() { 
-    return this->destino; 
-}
-int Viaje::getAsientosPublicados(){ 
-    return this->asientosPublicados; 
-}
-float Viaje::getPrecio() { 
-    return this->precio; 
-}
-
-Vehiculo* Viaje::getVehiculo() { 
-    return this->vehiculo; 
-}
-
-bool Viaje::AsientosDisponibles(int asientosSolicitados) {
-}
-
-
->>>>>>> main
