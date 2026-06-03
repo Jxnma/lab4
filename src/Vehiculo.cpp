@@ -1,3 +1,4 @@
+#include "../include/Conductor.h"
 #include "../include/Vehiculo.h"
 
 Vehiculo::Vehiculo(std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo) {
@@ -9,3 +10,10 @@ Vehiculo::Vehiculo(std::string matricula, int capacidad, std::string marca, std:
 }
 
 Vehiculo::~Vehiculo() {}
+
+Conductor* Vehiculo::getConductor() const{
+    return conductor;
+}
+void Vehiculo::setConductor(Conductor* c) {
+    this->conductor = c;
+}

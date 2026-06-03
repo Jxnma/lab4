@@ -8,3 +8,7 @@ Usuario::Usuario(std::string nickname, std::string nombre, std::string contrasen
 }
 
 Usuario::~Usuario() {}
+
+std::string Usuario::getNickname() const {
+    return nickname;
+}
