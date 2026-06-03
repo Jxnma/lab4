@@ -18,7 +18,7 @@ private:
 public:
     Reserva(int asientosReservados, DTFecha fecha);
     ~Reserva();
-    std::set<DTUsuarioViaje> getDTUPasajeros(); // retorna el pasajero de esta reserva como DTUsuarioViaje
+    std::set<DTUsuarioViaje> getDTUPasajeros(); // se crea un DTUsuarioViaje para cada pasajero asociado a la reserva y los retorna en un Set
     int getCodigoViaje();
 };
 

@@ -3,8 +3,10 @@
 
 #include "TipoVehiculo.h"
 #include <string>
+#include <set>
 
 class Conductor;
+class Viaje;
 
 class Vehiculo {
 private:
@@ -14,11 +16,21 @@ private:
     std::string modelo;
     TipoVehiculo tipo;
     Conductor* conductor;
+    std::set<Viaje*> viajes;
 
 public:
+    //Constructor - Destructor
     Vehiculo(std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo);
     ~Vehiculo();
-    Conductor* getConductor();
+    //Getters
+    Conductor* getConductor() const;
+    std::string getMatricula();
+    int getCapacidad();
+    std::string getMarca();
+    std::string getModelo();
+    TipoVehiculo getTipo();
+    //Setters de asociacion
+    void setConductor(Conductor* conductor);
 };
 
 #endif

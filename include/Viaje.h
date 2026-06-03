@@ -1,10 +1,11 @@
 #ifndef VIAJE_H
 #define VIAJE_H
 
+#include "DTUsuarioViaje.h"
 #include "DTFecha.h"
 #include <string>
 #include <set>
-
+#include "DTUsuarioViaje.h"
 class Reserva; 
 class Vehiculo;
 
@@ -22,9 +23,17 @@ private:
 public:
     Viaje(int codigo, DTFecha fecha, std::string origen, std::string destino, int asientosPublicados, float precio);
     ~Viaje();
-    std::set<DTUsuarioViaje> getParticipantes(); // el grueso del diagrama de comunicación
     Vehiculo* getVehiculo();
-    int getCodigo();
+    void setVehiculo(Vehiculo* v);
+    int getCodigo() const;
+    void agregarReserva(Reserva* r);
+    std::set<DTUsuarioViaje> getParticipantes(std::string nicknameCalificador) ;
+    DTFecha getFecha();
+    std::string getOrigen();
+    std::string getDestino();
+    int getAsientosPublicados();
+    float getPrecio();
+    bool AsientosDisponibles(int asientosSolicitados);
 };
 
 #endif

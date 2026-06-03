@@ -13,7 +13,7 @@ protected:
 public:
     Usuario(std::string nickname, std::string nombre, std::string contrasena, std::string email);
     virtual ~Usuario();
-    std::string getNickname();
+    std::string getNickname() const;
 };
 
 #endif
