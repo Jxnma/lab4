@@ -1,7 +1,7 @@
 #include "../include/ControladorViaje.h"
 CntViaje* CntViaje::instancia = nullptr;
 CntViaje::CntViaje() {
-    mnjViaje = MnjViaje::getInstancia();
+    mnjViaje = MnjViaje::getInstance();
     mnjVehiculo = MnjVehiculo::getInstancia();
 }
 CntViaje* CntViaje::getInstancia() {
