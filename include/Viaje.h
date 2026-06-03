@@ -4,7 +4,7 @@
 #include "DTFecha.h"
 #include <string>
 #include <set>
-
+#include "DTUsuarioViaje.h"
 class Reserva; 
 class Vehiculo;
 
@@ -22,9 +22,16 @@ private:
 public:
     Viaje(int codigo, DTFecha fecha, std::string origen, std::string destino, int asientosPublicados, float precio);
     ~Viaje();
-    std::set<DTUsuarioViaje> getParticipantes(); // el grueso del diagrama de comunicación
-    Vehiculo* getVehiculo();
     int getCodigo();
+    DTFecha getFecha();
+    std::string getOrigen();
+    std::string getDestino();
+    int getAsientosPublicados();
+    float getPrecio();
+    Vehiculo* getVehiculo();
+    std::set<DTUsuarioViaje> getParticipantes();
+    bool AsientosDisponibles(int asientosSolicitados);
+    Vehiculo* getVehiculo();
 };
 
 #endif

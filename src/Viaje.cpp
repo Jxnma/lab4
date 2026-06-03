@@ -9,4 +9,32 @@ Viaje::Viaje(int codigo, DTFecha fecha, std::string origen, std::string destino,
     this->precio = precio;
 }
 
-Viaje::~Viaje() {}
+Viaje::~Viaje() {};
+
+int Viaje::getCodigo(){ 
+    return this->codigo; 
+}
+DTFecha Viaje::getFecha(){
+    return this->fecha; 
+}
+std::string Viaje::getOrigen(){ 
+    return this->origen; 
+}
+std::string Viaje::getDestino() { 
+    return this->destino; 
+}
+int Viaje::getAsientosPublicados(){ 
+    return this->asientosPublicados; 
+}
+float Viaje::getPrecio() { 
+    return this->precio; 
+}
+
+Vehiculo* Viaje::getVehiculo() { 
+    return this->vehiculo; 
+}
+
+bool Viaje::AsientosDisponibles(int asientosSolicitados) {
+}
+
+

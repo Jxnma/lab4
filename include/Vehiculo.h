@@ -3,7 +3,6 @@
 
 #include "TipoVehiculo.h"
 #include <string>
-
 class Conductor;
 
 class Vehiculo {
@@ -18,7 +17,14 @@ private:
 public:
     Vehiculo(std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo);
     ~Vehiculo();
+    std::string getMatricula();
+    int getCapacidad();
+    std::string getMarca();
+    std::string getModelo();
+    TipoVehiculo getTipo();
     Conductor* getConductor();
+    void setConductor(Conductor* conductor);
+ 
 };
 
 #endif
