@@ -42,10 +42,10 @@ float Viaje::getPrecio() {
 Vehiculo* Viaje::getVehiculo() { 
     return this->vehiculo; 
 }
-float Viaje::getPrecio() { 
-    return this->precio; 
-}
+
 bool Viaje::AsientosDisponibles(int asientosSolicitados) {
+    //falta hacer
+    return;
 }
 
 std::set<DTUsuarioViaje> Viaje::getParticipantes(std::string nicknameCalificador) {
