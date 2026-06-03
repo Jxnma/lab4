@@ -10,21 +10,27 @@ Vehiculo::Vehiculo(std::string matricula, int capacidad, std::string marca, std:
 
 Vehiculo::~Vehiculo() {}
 
+//Getters
 std::string Vehiculo::getMatricula() {
     return this->matricula;
 }
+
 int Vehiculo::getCapacidad() {
     return this->capacidad;
 }
+
 std::string Vehiculo::getMarca() {
     return this->marca;
 }
+
 std::string Vehiculo::getModelo() {
     return this->modelo;
 }
+
 TipoVehiculo Vehiculo::getTipo() {  
     return this->tipo;
 }
+
 Conductor* Vehiculo::getConductor() {
     return this->conductor;
 }

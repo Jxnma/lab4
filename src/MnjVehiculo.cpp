@@ -9,21 +9,23 @@ MnjVehiculo* MnjVehiculo::getInstancia(){
     }
     return instancia;
 }
-MnjVehiculo::~MnjVehiculo() {
-    std::map<std::string, Vehiculo>::iterator it;
+
+MnjVehiculo::~MnjVehiculo(){
+    std::map<std::string, Vehiculo*>::iterator it;
     for (it = vehiculos.begin(); it != vehiculos.end(); ++it) {
-        vehiculos.erase(it);
-    }
+        delete it->second;
     vehiculos.clear();
-    delete instancia;
+    }
     instancia = nullptr;
 }
+    
+ 
 
-void MnjVehiculo::agregarVehiculo(Vehiculo v) {
-    vehiculos[v.getMatricula()] = v;
+void MnjVehiculo::agregarVehiculo(Vehiculo* v) {
+    vehiculos[v->getMatricula()] = v;
 }
 
-Vehiculo MnjVehiculo::getVehiculo(std::string matricula) {
+Vehiculo* MnjVehiculo::getVehiculo(std::string matricula) {
     return vehiculos[matricula];
 }
 
@@ -31,8 +33,8 @@ bool MnjVehiculo::existeVehiculo(std::string matricula) {
     return vehiculos.find(matricula) != vehiculos.end();
 }
 
-Vehiculo MnjVehiculo::nuevoVehiculo(std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo) {
-    Vehiculo v(matricula, capacidad, marca, modelo, tipo);
+Vehiculo* MnjVehiculo::nuevoVehiculo(std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo) {
+    Vehiculo* v = new Vehiculo(matricula, capacidad, marca, modelo, tipo);
     agregarVehiculo(v);
     return v;
 }
