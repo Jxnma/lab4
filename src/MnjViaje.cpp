@@ -1,6 +1,9 @@
 #include "../include/MnjViaje.h"
+<<<<<<< HEAD
 #include "../include/Viaje.h"    
 #include "../include/Reserva.h"
+=======
+>>>>>>> main
 
 MnjViaje* MnjViaje::instancia = nullptr;
 MnjViaje::MnjViaje() {}
@@ -21,11 +24,15 @@ MnjViaje::~MnjViaje() {
 }
 
 Viaje* MnjViaje::getViaje(int codigo) {
+<<<<<<< HEAD
     auto it = viajes.find(codigo);
     if (it != viajes.end()) {
         return it->second;
     }
     return nullptr;
+=======
+    return viajes[codigo];
+>>>>>>> main
 }
 
 bool MnjViaje::existeViaje(int codigo) {
