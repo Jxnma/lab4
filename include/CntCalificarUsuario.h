@@ -20,7 +20,7 @@ public:
 
     std::set<DTUsuario> listarUsuarios() override;
     std::set<DTListarViaje> listarViajes(std::string nickname) override;
-    std::set<DTUsuarioViaje> listarUsuariosViaje(int codigo) override;
+    std::vector<DTUsuarioViaje> listarUsuariosViaje(int codigo) override;
     bool calificarUsuario(std::string nicknameCalificado, int calificacion) override;
 };
 
