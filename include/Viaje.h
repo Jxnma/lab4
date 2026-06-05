@@ -4,7 +4,7 @@
 #include "DTUsuarioViaje.h"
 #include "DTFecha.h"
 #include <string>
-#include <set>
+#include <vector>
 #include "DTUsuarioViaje.h"
 class Reserva; 
 class Vehiculo;
@@ -17,7 +17,7 @@ private:
     std::string destino;
     int asientosPublicados;
     float precio;
-    std::set<Reserva*> reservas;
+    std::vector<Reserva*> reservas;
     Vehiculo* vehiculo;
 
 public:
@@ -27,7 +27,7 @@ public:
     void setVehiculo(Vehiculo* v);
     int getCodigo() const;
     void agregarReserva(Reserva* r);
-    std::set<DTUsuarioViaje> getParticipantes(std::string nicknameCalificador) ;
+    std::vector<DTUsuarioViaje> getParticipantes(std::string nicknameCalificador);
     DTFecha getFecha();
     std::string getOrigen();
     std::string getDestino();

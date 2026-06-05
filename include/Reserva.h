@@ -3,7 +3,7 @@
 
 #include "DTFecha.h"
 #include "DTUsuarioViaje.h"
-#include <set>
+#include <vector>
 
 class Pasajero;
 class Viaje; 
@@ -18,7 +18,7 @@ private:
 public:
     Reserva(int asientosReservados, DTFecha fecha);
     ~Reserva();
-    std::set<DTUsuarioViaje> getDTUPasajeros(); // se crea un DTUsuarioViaje para cada pasajero asociado a la reserva y los retorna en un Set
+    std::vector<DTUsuarioViaje> getDTUPasajeros(); // se crea un DTUsuarioViaje para cada pasajero asociado a la reserva y los retorna en un Vector
     int getCodigoViaje();
 };
 

@@ -15,7 +15,7 @@ Viaje::Viaje(int codigo, DTFecha fecha, std::string origen, std::string destino,
 Viaje::~Viaje() {}
 
 void Viaje::agregarReserva(Reserva* r) {
-    reservas.insert(r);
+    reservas.push_back(r);  
 }
 
 void Viaje::setVehiculo(Vehiculo* v) {
@@ -48,14 +48,13 @@ bool Viaje::AsientosDisponibles(int asientosSolicitados) {
     return;
 }
 
-std::set<DTUsuarioViaje> Viaje::getParticipantes(std::string nicknameCalificador) {
-    std::set<DTUsuarioViaje> resultado;
-    
+std::vector<DTUsuarioViaje> Viaje::getParticipantes(std::string nicknameCalificador) {
+    std::vector<DTUsuarioViaje> resultado;
     for (Reserva* r : reservas) {
         auto dts = r->getDTUPasajeros();
         for (const auto& dt : dts) {
             if (dt.getNickname() != nicknameCalificador) {  // filtro acá
-                resultado.insert(dt);
+                resultado.push_back(dt);
             }
         }
     }
@@ -63,7 +62,7 @@ std::set<DTUsuarioViaje> Viaje::getParticipantes(std::string nicknameCalificador
     Conductor* c = vehiculo->getConductor();
     DTUsuarioViaje dtConductor = c->getDTUsuarioViaje();
     if (dtConductor.getNickname() != nicknameCalificador) {  // filtro acá también
-        resultado.insert(dtConductor);
+        resultado.push_back(dtConductor);
     }
     
     return resultado;

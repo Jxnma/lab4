@@ -3,7 +3,7 @@
 
 #include "TipoVehiculo.h"
 #include <string>
-#include <set>
+#include <vector>
 
 class Conductor;
 class Viaje;
@@ -16,7 +16,7 @@ private:
     std::string modelo;
     TipoVehiculo tipo;
     Conductor* conductor;
-    std::set<Viaje*> viajes;
+    std::vector<Viaje*> viajes;
 
 public:
     //Constructor - Destructor

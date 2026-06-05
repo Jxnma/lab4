@@ -11,10 +11,10 @@ Reserva::Reserva(int asientosReservados, DTFecha fecha) {
 
 Reserva::~Reserva() {}
 
-std::set<DTUsuarioViaje> Reserva::getDTUPasajeros() {
-    std::set<DTUsuarioViaje> resultado;
+std::vector<DTUsuarioViaje> Reserva::getDTUPasajeros() {
+    std::vector<DTUsuarioViaje> resultado;
     if (pasajero != nullptr) {
-        resultado.insert(DTUsuarioViaje(pasajero->getNickname(), TipoUsuario::Pasajero));
+        resultado.push_back(DTUsuarioViaje(pasajero->getNickname(), TipoUsuario::Pasajero));
     }
     return resultado;
 }

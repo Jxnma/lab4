@@ -18,7 +18,7 @@ CntCalificarUsuario* CntCalificarUsuario::getInstance() {
 
 CntCalificarUsuario::~CntCalificarUsuario() {}
 
-std::set<DTUsuarioViaje> CntCalificarUsuario::listarUsuariosViaje(int codigo) {
+std::vector<DTUsuarioViaje> CntCalificarUsuario::listarUsuariosViaje(int codigo) {
     // se guarda en memoria
     this->codigoViaje = codigo;
 
