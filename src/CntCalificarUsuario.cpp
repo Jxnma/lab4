@@ -1,5 +1,6 @@
 #include "../include/CntCalificarUsuario.h"
 #include "../include/MnjViaje.h"
+#include "../include/MnjUsuario.h"
 #include "../include/Viaje.h"
 
 CntCalificarUsuario* CntCalificarUsuario::instancia = nullptr;
@@ -17,6 +18,12 @@ CntCalificarUsuario* CntCalificarUsuario::getInstance() {
 }
 
 CntCalificarUsuario::~CntCalificarUsuario() {}
+
+std::set<DTUsuario> CntCalificarUsuario::listarUsuarios(){
+    MnjUsuario* m = MnjUsuario::getInstance();
+    std::set<DTUsuario> dtus = m->getUsuarios();
+    return dtus;
+}
 
 std::vector<DTUsuarioViaje> CntCalificarUsuario::listarUsuariosViaje(int codigo) {
     // se guarda en memoria
