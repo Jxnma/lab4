@@ -1,6 +1,7 @@
 #include "../include/Fabrica.h"
 #include "../include/ControladorFechaActual.h"
 #include "../include/CntCalificarUsuario.h"
+#include "../include/CntUsuario.h"
 
 Fabrica* Fabrica::instancia = nullptr;
 
@@ -19,3 +20,6 @@ IControladorFechaActual* Fabrica::getIControladorFechaActual() {
 ICalificarUsuario* Fabrica::getICalificarUsuario() {
     return CntCalificarUsuario::getInstance();
 }
+ IAltaDeUsuario* Fabrica::getIAltaDeUsuario(){
+    return CntUsuario::getInstance();
+ }

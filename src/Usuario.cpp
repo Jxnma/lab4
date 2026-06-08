@@ -12,3 +12,7 @@ Usuario::~Usuario() {}
 std::string Usuario::getNickname() const {
     return nickname;
 }
+
+std::string Usuario::getNombre() {
+    return nombre;
+}

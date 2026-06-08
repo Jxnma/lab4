@@ -3,6 +3,8 @@
 
 #include "IControladorFechaActual.h"
 #include "ICalificarUsuario.h"
+#include "IAltaDeUsuario.h"
+
 
 class Fabrica {
 private:
@@ -15,6 +17,7 @@ public:
 
     IControladorFechaActual* getIControladorFechaActual();
     ICalificarUsuario* getICalificarUsuario();
+    IAltaDeUsuario* getIAltaDeUsuario();
 };
 
 #endif

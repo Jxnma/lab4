@@ -11,3 +11,10 @@ Conductor::~Conductor() {}
 DTUsuarioViaje Conductor::getDTUsuarioViaje() const {
     return DTUsuarioViaje(getNickname(), TipoUsuario::Conductor);
 }
+ std::set<Vehiculo*> Conductor:: getVehiculos() const{
+    return vehiculos;
+
+ }
+  void Conductor :: agregarVehiculo(Vehiculo* v){
+     vehiculos.insert(v);
+  }
