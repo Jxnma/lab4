@@ -1,5 +1,4 @@
 #include "../include/CntUsuario.h"
-#include "../include/MnjUsuario.h"
 
 CntUsuario* CntUsuario::instancia = nullptr;
 
@@ -20,3 +19,15 @@ bool CntUsuario::altaConductor(std::string nickname, std::string nombre, std::st
     return mu->nuevoConductor(nickname, nombre, contrasena, email, libretas); 
 }
 
+int CntUsuario::registrarVehiculo(std::string nickname, std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo) {
+    MnjVehiculo* mv = MnjVehiculo::getInstancia();
+    if(mv->existeVehiculo(matricula)) {
+        return -1; 
+    }
+    MnjUsuario* mu = MnjUsuario::getInstance();
+    Usuario* u = mu->registVehiCond(nickname, matricula, capacidad, marca, modelo, tipo);
+    if (u == nullptr) {
+        return -2; 
+    }
+    return 0;
+}

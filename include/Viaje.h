@@ -1,12 +1,13 @@
 #ifndef VIAJE_H
 #define VIAJE_H
 
+#include "Reserva.h"
 #include "DTUsuarioViaje.h"
 #include "DTFecha.h"
 #include <string>
 #include <vector>
 #include "DTUsuarioViaje.h"
-class Reserva; 
+
 class Vehiculo;
 
 class Viaje {

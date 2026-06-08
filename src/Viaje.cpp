@@ -43,9 +43,14 @@ Vehiculo* Viaje::getVehiculo() {
     return this->vehiculo; 
 }
 
+
+
 bool Viaje::AsientosDisponibles(int asientosSolicitados) {
-    //falta hacer
-    return;
+    int TotalReservados = 0;
+    for (Reserva* r : this->reservas) {
+        TotalReservados += r->getAsientosReservados();
+    }
+    return (TotalReservados + asientosSolicitados) <= this->asientosPublicados;
 }
 
 std::vector<DTUsuarioViaje> Viaje::getParticipantes(std::string nicknameCalificador) {

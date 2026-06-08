@@ -20,6 +20,9 @@ MnjViaje::~MnjViaje() {
     instancia = nullptr;
 }
 
+void MnjViaje::agregarReserva(Viaje* vi, Reserva* reserva) {
+    vi->agregarReserva(reserva);
+}
 Viaje* MnjViaje::getViaje(int codigo) {
     auto it = viajes.find(codigo);
     if (it != viajes.end()) {
@@ -32,8 +35,8 @@ bool MnjViaje::existeViaje(int codigo) {
     return viajes.find(codigo) != viajes.end();
 }
 
-bool MnjViaje::asientosDisp(int codigo, int asientosSolicitados) {
-        return viajes[codigo]->AsientosDisponibles(asientosSolicitados);
+bool MnjViaje::asientosDisp(Viaje* vi, int asientosSolicitados) {
+    return vi->AsientosDisponibles(asientosSolicitados);
 }
 
 

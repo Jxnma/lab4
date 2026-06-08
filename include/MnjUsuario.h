@@ -4,9 +4,11 @@
 #include <string>
 #include <set>
 #include <map>
-
+#include "Conductor.h"
+#include "Pasajero.h"
 #include "DTUsuario.h"
 #include "TipoLibreta.h"
+#include "MnjVehiculo.h"
 
 class Usuario;
 class Pasajero;
@@ -20,10 +22,11 @@ private:
     MnjUsuario();
 public:
     static MnjUsuario* getInstance();
+    ~MnjUsuario();
     std:: set<DTUsuario> getUsuarios();
     Usuario* getUsuario(std::string nickname);
     std::set<std::string> getPasajeros();
-    Usuario* registVehiCond(std::string nick);
+    Usuario* registVehiCond(std::string nick, std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo);
     bool tieneReserva(Pasajero* p, Viaje* vi);
     void agregarReserva(std::string nick, Reserva* r);
     bool nuevoConductor(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::set<TipoLibreta> libretas);

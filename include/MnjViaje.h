@@ -23,7 +23,7 @@ public:
     void agregarReserva(Viaje* vi, Reserva* reserva);
     Viaje* getViaje(int codigo);
     bool existeViaje(int codigo);
-    bool asientosDisp(int codigo, int asientosSolicitados);
+    bool asientosDisp(Viaje* vi, int asientosSolicitados);
     bool chequearViaje(DTFecha fecha, std::string origen, std::string destino);
 };
 
