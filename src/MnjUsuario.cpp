@@ -45,4 +45,12 @@ bool MnjUsuario::existeUsuario(std::string nickname){
 void MnjUsuario :: agregarUsuario(Usuario* u){
     usuarios.insert({u->getNickname(), u});
 }
-;
+
+std::set<DTUsuario> MnjUsuario::getUsuarios() {
+    std::set<DTUsuario> dtus;
+    for (auto const& [nickname, u] : this->usuarios) {
+        DTUsuario dtu(u->getNickname(), u->getNombre());
+        dtus.insert(dtu);
+    }
+    return dtus;
+}
