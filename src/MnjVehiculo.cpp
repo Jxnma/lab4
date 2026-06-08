@@ -14,8 +14,8 @@ MnjVehiculo::~MnjVehiculo(){
     std::map<std::string, Vehiculo*>::iterator it;
     for (it = vehiculos.begin(); it != vehiculos.end(); ++it) {
         delete it->second;
-    vehiculos.clear();
     }
+    vehiculos.clear();
     instancia = nullptr;
 }
     
