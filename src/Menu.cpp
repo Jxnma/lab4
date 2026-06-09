@@ -1,8 +1,11 @@
 #include "../include/Menu.h"
 #include "../include/Fabrica.h"
 #include "../include/IControladorFechaActual.h"
+#include "../include/IAltaDeUsuario.h"
 #include "../include/CargaDatos.h"
 #include "../include/DTFecha.h"
+#include "../include/TipoLibreta.h"
+#include "../include/TipoVehiculo.h"
 #include <iostream>
 #include <limits>
 #include <string>
@@ -26,15 +29,32 @@ void Menu::altaUsuario() {
     std::cout << "Ingrese contrasena: "; std::getline(std::cin, contrasena);
     std::cout << "Ingrese email: "; std::getline(std::cin, email);
 
-
+    Fabrica* fabrica = Fabrica::getInstance();
+    IAltaDeUsuario* controlador = fabrica->getIAltaDeUsuario();
+    
     bool usuarioOk = false;
+
 
     if (tipoUsuario == 1) {
         std::string ci;
         std::cout << "Ingrese CI: "; std::getline(std::cin, ci);
-        //TODO: usuarioOk = controlador->altaPasajero(nickname, nombre, contrasena, email, ci)
+        usuarioOk = controlador->altaPasajero(nickname, nombre, contrasena, email, ci);
     } else if (tipoUsuario == 2) {
-        //TODO: usuarioOk = controlador->altaConductor(nickname, nombre, contrasena, email, libretas)
+        std::set<TipoLibreta> libretas;
+        int lib;
+        std::cout << "Ingrese libreta (0: MotoProfesional, 1: MotoAmateur, 2: AutoProfesional, 3: AutoAmateur) -1 para terminar: ";
+        std::cin >> lib;
+        while (lib != -1) {
+            if (lib >= 0 && lib <= 3) { 
+                libretas.insert((TipoLibreta)lib);
+            }
+            else {
+            std::cout << "Libreta invalida.\n";
+            }
+        std::cin >> lib;
+        }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        usuarioOk = controlador->altaConductor(nickname, nombre, contrasena, email, libretas);
         int agregarVehiculo = 1;
         while (usuarioOk == true && agregarVehiculo == 1) {
             std::string matricula, marca, modelo;
