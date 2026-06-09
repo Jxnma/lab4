@@ -1,4 +1,7 @@
 #include "../include/Usuario.h"
+#include "../include/Calificacion.h"
+#include "../include/Reserva.h"
+#include "../include/Pasajero.h"
 
 Usuario::Usuario(std::string nickname, std::string nombre, std::string contrasena, std::string email) {
     this->nickname = nickname;
@@ -15,4 +18,36 @@ std::string Usuario::getNickname() const {
 
 std::string Usuario::getNombre() {
     return nombre;
+}
+
+bool Usuario::existeCalificacion(Usuario* uCalificado, int codVi) {
+    for (Calificacion* c : calificaciones) {
+        if (c->calificaA(uCalificado, codVi)) return true;
+    }
+    return false;
+}
+void Usuario::addRealiza(Calificacion* c) {
+    calificaciones.insert(c);
+}
+// paso 5 del diagrama de comunicacion calificarUsuario
+bool Usuario::crearCalificacion(Usuario* uCalificado, int codigoViaje, int cal, DTFecha fecha) {
+    Calificacion* c = new Calificacion(fecha, cal);
+    this->addRealiza(c);
+    c->addCalifica(uCalificado);
+
+    // 5.4a si calificador es pasajero, busca su propia reserva
+    Reserva* r = nullptr;
+    Pasajero* calificadorPasajero = dynamic_cast<Pasajero*>(this);
+    if (calificadorPasajero != nullptr) {
+        r = calificadorPasajero->getReserva(codigoViaje);
+    } else {
+        // 5.4b si calificador es conductor, busca reserva del calificado
+        Pasajero* calificadoPasajero = dynamic_cast<Pasajero*>(uCalificado);
+        if (calificadoPasajero != nullptr) {
+            r = calificadoPasajero->getReserva(codigoViaje);
+        }
+    }
+
+    c->addSobreReserva(r);
+    return true;
 }

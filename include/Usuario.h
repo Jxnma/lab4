@@ -26,7 +26,6 @@ public:
     virtual std::set<DTListarViaje> getViajes()=0;
     bool existeCalificacion(Usuario* uCalif, int codVi);
     bool crearCalificacion(Usuario* uCalif, int vi, int cal, DTFecha fecha);
-    Reserva* getReserva(Pasajero* p, int codigoViaje);
     void addRealiza(Calificacion* c);
 };
 
