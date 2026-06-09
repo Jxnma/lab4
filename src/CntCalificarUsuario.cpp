@@ -27,6 +27,14 @@ std::set<DTUsuario> CntCalificarUsuario::listarUsuarios(){
     return dtus;
 }
 
+std::set<DTListarViaje> CntCalificarUsuario::listarViajes(std::string nickname){
+    this->nicknameCalificador = nickname;
+    MnjUsuario* m = MnjUsuario::getInstance();
+    Usuario* us = m->getUsuario(nickname); 
+    std::set<DTListarViaje> dtvis = us->getViajes();
+    return dtvis;
+}
+
 std::vector<DTUsuarioViaje> CntCalificarUsuario::listarUsuariosViaje(int codigo) {
     // se guarda en memoria
     this->codigoViaje = codigo;

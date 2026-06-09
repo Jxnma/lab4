@@ -29,6 +29,7 @@ public:
     std::string getMarca();
     std::string getModelo();
     TipoVehiculo getTipo();
+    std::vector<Viaje*> getViajes();
     //Setters de asociacion
     void setConductor(Conductor* conductor);
 };
