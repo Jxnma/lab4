@@ -2,6 +2,8 @@
 #include "../include/ControladorFechaActual.h"
 #include "../include/CntCalificarUsuario.h"
 #include "../include/CntUsuario.h"
+#include "../include/CntReserva.h"
+#include "../include/CntViaje.h"
 
 Fabrica* Fabrica::instancia = nullptr;
 
@@ -23,3 +25,11 @@ ICalificarUsuario* Fabrica::getICalificarUsuario() {
  IAltaDeUsuario* Fabrica::getIAltaDeUsuario(){
     return CntUsuario::getInstance();
  }
+
+ IGenerarReserva* Fabrica::getIGenerarReserva(){
+    return CntReserva::getInstancia();
+ }
+
+ IAltaViaje* Fabrica::getIAltaViaje(){
+    return CntViaje::getInstancia();
+}

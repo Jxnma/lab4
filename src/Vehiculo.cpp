@@ -42,3 +42,18 @@ void Vehiculo::setConductor(Conductor* conductor) {
 std::vector<Viaje*> Vehiculo::getViajes(){
     return this->viajes;
 }
+
+bool Vehiculo::hayViajesConductor(DTFecha fecha){
+    return conductor->hayViajesFechaConductor(fecha);
+}
+void Vehiculo::asociarViaje(Viaje* vi){
+    viajes.push_back(vi);
+}
+bool Vehiculo::hayViajesFecha(DTFecha fecha){
+    for(Viaje* v : viajes){
+        if(v!=nullptr and (v->getFecha() == fecha)) 
+        return true;
+    }
+    return false;
+    }
+

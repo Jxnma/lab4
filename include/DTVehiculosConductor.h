@@ -1,7 +1,9 @@
 #ifndef DT_VEHICULOS_CONDUCTOR_H
 #define DT_VEHICULOS_CONDUCTOR_H
 
+#include <vector>
 #include <string>
+#include <DTDetalleVehiculo.h>
 
 class DTVehiculosConductor {
 private:

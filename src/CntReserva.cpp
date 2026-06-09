@@ -12,8 +12,6 @@ CntReserva* CntReserva::getInstancia() {
     return instancia;
 }
 CntReserva::~CntReserva() {
-    mnjViaje->~MnjViaje();
-    mnjUsuario->~MnjUsuario();
 }
 
 bool CntReserva::generarReserva(std::string nickname, int codigoViaje, int asientos) {

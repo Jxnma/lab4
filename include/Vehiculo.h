@@ -4,9 +4,8 @@
 #include "TipoVehiculo.h"
 #include <string>
 #include <vector>
-
-class Conductor;
-class Viaje;
+#include "Viaje.h"
+#include "Conductor.h"
 
 class Vehiculo {
 private:
@@ -32,6 +31,9 @@ public:
     std::vector<Viaje*> getViajes();
     //Setters de asociacion
     void setConductor(Conductor* conductor);
+    void asociarViaje(Viaje* vi);
+    bool hayViajesConductor(DTFecha fecha);
+    bool hayViajesFecha(DTFecha fecha);
 };
 
 #endif

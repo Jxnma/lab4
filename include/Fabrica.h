@@ -4,12 +4,13 @@
 #include "IControladorFechaActual.h"
 #include "ICalificarUsuario.h"
 #include "IAltaDeUsuario.h"
-
+#include "IGenerarReserva.h"
+#include "IAltaViaje.h"
 
 class Fabrica {
 private:
     static Fabrica* instancia;
-
+ 
     Fabrica();
 
 public:
@@ -18,6 +19,8 @@ public:
     IControladorFechaActual* getIControladorFechaActual();
     ICalificarUsuario* getICalificarUsuario();
     IAltaDeUsuario* getIAltaDeUsuario();
+    IGenerarReserva* getIGenerarReserva();
+    IAltaViaje* getIAltaViaje();
 };
 
 #endif

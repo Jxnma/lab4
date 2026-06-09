@@ -21,11 +21,10 @@ public:
     std::set<Vehiculo*> getVehiculos() const;
     DTUsuarioViaje getDTUsuarioViaje();
     bool tieneLibreta(TipoLibreta tipo);
-    bool hayViajesFechaConductor(DTFecha fecha);
     std::set<DTVehiculosConductor> listarVehiculos();
     void agregarVehiculo(Vehiculo* v); 
     std::set<DTListarViaje> getViajes();
-
+    bool hayViajesFechaConductor(DTFecha fecha);
 };
 
 #endif

@@ -68,7 +68,8 @@ void Menu::altaUsuario() {
             std::cout << "Ingrese tipo (0: Auto, 1: Moto): "; std::cin >> tipo;
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             int resultadoRegistrarVehiculo = -3;
-            //TODO: resultadoRegistrarVehiculo = controlador->registrarVehiculo(nickname, matricula, capacidad, marca, modelo, tipo)
+            TipoVehiculo tipoVehiculo = (tipo == 0) ? Auto : Moto;
+            resultadoRegistrarVehiculo = controlador->registrarVehiculo(nickname, matricula, capacidad, marca, modelo, tipoVehiculo);
             if (resultadoRegistrarVehiculo == -1) {
                 std::cout << "Ya existe un vehiculo con esa matricula.\n";
             } else if (resultadoRegistrarVehiculo == -2) {
@@ -88,8 +89,11 @@ void Menu::altaViaje() {
     int dia, mes, anio, asientos;
     float precio;
 
+    Fabrica* Fabrica = Fabrica::getInstance();
+    IAltaViaje* controlador = Fabrica->getIAltaViaje();
+
     std::cout << "Ingrese nickname del conductor: "; std::getline(std::cin, nickname);
-    //TODO: Coleccion de DTVehiculosConductor = controlador->listarVehiculosConductor(nickname)
+    std::set<DTVehiculosConductor*> vehiculos = controlador->listarVehiculosConductor(nickname);
     //TODO: Recorrer la coleccion y mostrar "> Matricula: xx, Capacidad: yy, Marca: zzz, Modelo: www, Tipo: ttt"
 
     std::cout << "Ingrese matricula del vehiculo a utilizar: "; std::getline(std::cin, matricula);
@@ -117,6 +121,8 @@ void Menu::altaViaje() {
 }
 
 void Menu::generarReserva() {
+    Fabrica* Fabrica = Fabrica::getInstance();
+    IGenerarReserva* controlador = Fabrica->getIGenerarReserva(); 
     //TODO: Colecion de String = controlador->listarPasajeros()
     //TODO: Recorrer la colección y mostrar "> xx"
     std::string nickname;
@@ -158,7 +164,7 @@ void Menu::generarReserva() {
     }
 
     bool reservaOk = false;
-    //TODO: reservaOk = controlador->generarReserva(nickname, codigo, asientos)
+    reservaOk = controlador->generarReserva(nickname, codigo, asientos);
     if (reservaOk) {
         std::cout << "Reserva realizada exitosamente.\n";
     } else {

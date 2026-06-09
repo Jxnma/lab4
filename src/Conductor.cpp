@@ -2,7 +2,7 @@
 #include "../include/Vehiculo.h"
 #include "../include/Viaje.h"
 #include "../include/DTUsuarioViaje.h"
-
+#include "../include/Vehiculo.h"
 Conductor::Conductor(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::set<TipoLibreta> libs)
     : Usuario(nickname, nombre, contrasena, email) {
     this->libretas = libs;
@@ -57,3 +57,22 @@ std::set<DTListarViaje> Conductor::getViajes() {
     }  
     return dtvis;
 }
+
+ std::set<DTVehiculosConductor> Conductor:: listarVehiculos(){
+    std::set<DTVehiculosConductor> res;
+    for(Vehiculo* v : vehiculos){
+        DTVehiculosConductor dt(v->getMatricula(),v->getMarca(), v->getCapacidad());
+        res.insert(dt);
+    }
+    return res;
+ }
+
+bool Conductor::hayViajesFechaConductor(DTFecha fecha){
+    for(Vehiculo* v : vehiculos){
+        if(v!=nullptr and v->hayViajesFecha(fecha)) 
+        return true;
+    }
+    return false;
+}
+
+
