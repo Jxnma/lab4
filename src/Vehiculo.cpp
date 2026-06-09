@@ -39,3 +39,6 @@ Conductor* Vehiculo::getConductor() const{
 void Vehiculo::setConductor(Conductor* conductor) {
     this->conductor = conductor;
 }
+std::vector<Viaje*> Vehiculo::getViajes(){
+    return this->viajes;
+}

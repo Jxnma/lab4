@@ -12,7 +12,7 @@ class Vehiculo;
 class Conductor : public Usuario {
 private:
     std::set<TipoLibreta> libretas;
-     std::set<Vehiculo*> vehiculos; 
+    std::set<Vehiculo*> vehiculos; 
 
 public:
     Conductor(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::set<TipoLibreta> libs);

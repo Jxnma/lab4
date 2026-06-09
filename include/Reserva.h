@@ -21,6 +21,7 @@ public:
     std::vector<DTUsuarioViaje> getDTUPasajeros(); // se crea un DTUsuarioViaje para cada pasajero asociado a la reserva y los retorna en un Vector
     int getCodigoViaje();
     int getAsientosReservados();
+    Viaje* getViaje();
 };
 
 #endif

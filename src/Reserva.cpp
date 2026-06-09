@@ -26,3 +26,7 @@ int Reserva::getCodigoViaje() {
 int Reserva::getAsientosReservados() {
     return this->asientosReservados;
 }
+
+Viaje* Reserva::getViaje() {
+    return this->viaje;
+}
