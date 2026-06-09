@@ -2,6 +2,8 @@
 #include "../include/MnjViaje.h"
 #include "../include/MnjUsuario.h"
 #include "../include/Viaje.h"
+#include "../include/Usuario.h"
+#include "../include/ControladorFechaActual.h"
 
 CntCalificarUsuario* CntCalificarUsuario::instancia = nullptr;
 
@@ -34,4 +36,30 @@ std::vector<DTUsuarioViaje> CntCalificarUsuario::listarUsuariosViaje(int codigo)
     Viaje* vi = m->getViaje(codigo);
 
     return vi->getParticipantes(this->nicknameCalificador);
+}
+bool CntCalificarUsuario::calificarUsuario(std::string nicknameCalificado, int calificacion) {
+    MnjUsuario* m = MnjUsuario::getInstance();
+
+    Usuario* uCal = m->getUsuario(this->nicknameCalificador);
+    Usuario* uCalificado = m->getUsuario(nicknameCalificado);
+
+    // 4. verificar si ya existe calificacion
+    bool existe = uCal->existeCalificacion(uCalificado, this->codigoViaje);
+
+    if (existe) {
+        // liberar memoria y retornar false
+        this->nicknameCalificador = "";
+        this->codigoViaje = -1;
+        return false;
+    }
+
+    DTFecha fecha = ControladorFechaActual::getInstance()->getFecha();
+
+    // 5. crear calificacion
+    bool resultado = uCal->crearCalificacion(uCalificado, this->codigoViaje, calificacion, fecha);
+
+    this->nicknameCalificador = "";
+    this->codigoViaje = -1;
+
+    return resultado;
 }

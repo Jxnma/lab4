@@ -22,3 +22,15 @@ Pasajero::~Pasajero() {}
  void Pasajero::addReserva(Reserva* r) {
     this->Reservas.insert(r);
  }
+ std::set<Reserva*> Pasajero::getReservas() {
+    return this->Reservas;
+}
+
+ Reserva* Pasajero::getReserva(int codigoViaje) {
+    for (Reserva* r : this->Reservas) {
+        if (r->getCodigoViaje() == codigoViaje) {
+            return r;
+        }
+    }
+    return nullptr; // Si no se encuentra la reserva para el viaje dado
+}
