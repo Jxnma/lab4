@@ -1,8 +1,6 @@
 #ifndef PASAJERO_H
 #define PASAJERO_H
 
-#include "Reserva.h"
-#include "Viaje.h"
 #include "Usuario.h"
 #include "DTListarViaje.h"
 #include <string>
@@ -15,7 +13,6 @@ class Pasajero : public Usuario {
 private:
     std::string ci;
     std::set<Reserva*> Reservas;
-    std::set<Reserva> getReservas();
 
 public:
 
@@ -25,6 +22,7 @@ public:
     bool tieneReserva(Viaje* vi);
     std::set<DTListarViaje> getViajes();
     void addReserva(Reserva* r);
+    std::set<Reserva*> getReservas();
 };
 
 #endif
