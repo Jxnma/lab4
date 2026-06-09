@@ -26,7 +26,10 @@ void MnjVehiculo::agregarVehiculo(Vehiculo* v) {
 }
 
 Vehiculo* MnjVehiculo::getVehiculo(std::string matricula) {
-    return vehiculos[matricula];
+    if(vehiculos.count(matricula) > 0) {
+        return vehiculos[matricula];
+    }
+    return nullptr;
 }
 
 bool MnjVehiculo::existeVehiculo(std::string matricula) {

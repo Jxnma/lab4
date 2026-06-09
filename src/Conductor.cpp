@@ -14,7 +14,12 @@ DTUsuarioViaje Conductor::getDTUsuarioViaje() const {
  std::set<Vehiculo*> Conductor:: getVehiculos() const{
     return vehiculos;
 
- }
+}
+
+bool Conductor::tieneLibreta(TipoLibreta tipo) {
+    return libretas.count(tipo) > 0;
+}
+
   void Conductor :: agregarVehiculo(Vehiculo* v){
      vehiculos.insert(v);
   }

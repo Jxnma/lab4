@@ -1,4 +1,4 @@
-#include "../include/ControladorViaje.h"
+#include "../include/CntViaje.h"
 CntViaje* CntViaje::instancia = nullptr;
 CntViaje::CntViaje() {
     mnjViaje = MnjViaje::getInstance();

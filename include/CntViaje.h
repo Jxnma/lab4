@@ -1,12 +1,12 @@
-#ifndef CONTROLADOR_VIAJE_H
-#define CONTROLADOR_VIAJE_H
-
+#ifndef CNTVIAJE_H
+#define CNTVIAJE_H
+#include <set>
 #include "DTDetalleViaje.h"
 #include "DTVehiculosConductor.h"
 #include "MnjVehiculo.h"
 #include "MnjViaje.h"
 
-#endif
+
 
 class CntViaje {
 private:
@@ -23,3 +23,5 @@ public:
     void eliminarViaje();
     void cancelarEliminarViaje();
 };
+
+#endif

@@ -1,6 +1,7 @@
 #ifndef CNTUSUARIO_H
 #define CNTUSUARIO_H
- 
+
+#include "MnjUsuario.h"
 #include "IAltaDeUsuario.h"
 #include "TipoLibreta.h"
 #include "TipoVehiculo.h"

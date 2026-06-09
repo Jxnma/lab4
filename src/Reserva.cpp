@@ -22,3 +22,7 @@ std::vector<DTUsuarioViaje> Reserva::getDTUPasajeros() {
 int Reserva::getCodigoViaje() {
     return viaje->getCodigo();
 }
+
+int Reserva::getAsientosReservados() {
+    return this->asientosReservados;
+}
