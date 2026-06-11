@@ -4,8 +4,6 @@
 
 #include "IAltaViaje.h"
 #include "IGenerarReserva.h"
-#include "MnjViaje.h"
-#include "MnjUsuario.h"
 #include "Reserva.h"
 #include "DTConsultaViaje.h"
 #include <set>
@@ -13,8 +11,6 @@
 class CntReserva: public IGenerarReserva {
 private:
     static CntReserva* instancia;
-    MnjViaje* mnjViaje;
-    MnjUsuario* mnjUsuario;
     CntReserva();
 
 public:

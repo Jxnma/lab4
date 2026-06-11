@@ -4,18 +4,11 @@
 #include "IAltaViaje.h"
 #include "DTDetalleViaje.h"
 #include "DTVehiculosConductor.h"
-#include "MnjUsuario.h"
-#include "MnjVehiculo.h"
-#include "MnjViaje.h"
-
 
 
 class CntViaje: public IAltaViaje {
 private:
     static CntViaje* instancia;
-    MnjViaje* mnjViaje;
-    MnjVehiculo* mnjVehiculo;
-    MnjUsuario* mnjUsuario;
     CntViaje();
 public:
     static CntViaje* getInstancia();
