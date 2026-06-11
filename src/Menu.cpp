@@ -70,7 +70,8 @@ void Menu::altaUsuario() {
             std::cout << "Ingrese tipo (0: Auto, 1: Moto): "; std::cin >> tipo;
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             int resultadoRegistrarVehiculo = -3;
-            //TODO: resultadoRegistrarVehiculo = controlador->registrarVehiculo(nickname, matricula, capacidad, marca, modelo, tipo)
+            TipoVehiculo tipoVehiculo = (tipo == 0) ? Auto : Moto;
+            resultadoRegistrarVehiculo = controlador->registrarVehiculo(nickname, matricula, capacidad, marca, modelo, tipoVehiculo);
             if (resultadoRegistrarVehiculo == -1) {
                 std::cout << "Ya existe un vehiculo con esa matricula.\n";
             } else if (resultadoRegistrarVehiculo == -2) {
@@ -89,14 +90,34 @@ void Menu::altaViaje() {
     std::string nickname, matricula, origen, destino;
     int dia, mes, anio, asientos;
     float precio;
+    Fabrica* fabrica = Fabrica::getInstance();
+    IAltaViaje* controlador = fabrica->getIAltaViaje();
 
     std::cout << "Ingrese nickname del conductor: "; std::getline(std::cin, nickname);
-    //TODO: Coleccion de DTVehiculosConductor = controlador->listarVehiculosConductor(nickname)
-    //TODO: Recorrer la coleccion y mostrar "> Matricula: xx, Capacidad: yy, Marca: zzz, Modelo: www, Tipo: ttt"
+    std::set<DTVehiculosConductor> vehiculos = controlador->listarVehiculosConductor(nickname);
+
+   
+    for (DTVehiculosConductor dtv : vehiculos){
+        for (DTDetalleVehiculo v : dtv.getVehiculos()){
+            std::cout << "> Matricula: " << v.getMatricula() << ", Capacidad: " << v.getCapacidad()
+                      << ", Marca: "     << v.getMarca()     << ", Modelo: " << v.getModelo() 
+                      << ", Tipo: " << (v.getTipo() == Auto ? "Auto" : "Moto") << "\n";
+        }
+    }
+
 
     std::cout << "Ingrese matricula del vehiculo a utilizar: "; std::getline(std::cin, matricula);
     bool matriculaValida = false;
-    //TODO: Validar matricula en listado
+    for (DTVehiculosConductor dtv : vehiculos){
+        for (DTDetalleVehiculo v : dtv.getVehiculos()){
+            if(dtv.getMatricula() == matricula){
+                matriculaValida == true;
+                break;
+            }
+         
+        }
+        if(matriculaValida)  break;
+    }   
     if (!matriculaValida) {
         std::cout << "Matricula invalida.\n";
         return;
@@ -110,7 +131,7 @@ void Menu::altaViaje() {
     std::cout << "Ingrese precio por asiento: "; std::cin >> precio;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     bool viajeOk = false;
-    //TODO: viajeOk = controlador->altaViaje(matricula, DTFecha(dia, mes, anio), origen, destino, asientos, precio)
+    viajeOk = controlador->altaViaje(matricula, DTFecha(dia, mes, anio), origen, destino, asientos, precio);
     if (viajeOk) {
         std::cout << "Viaje registrado exitosamente.\n";
     } else {
@@ -119,6 +140,8 @@ void Menu::altaViaje() {
 }
 
 void Menu::generarReserva() {
+    Fabrica* fabrica = Fabrica::getInstance();
+    IGenerarReserva* controlador = fabrica->getIGenerarReserva();
     //TODO: Colecion de String = controlador->listarPasajeros()
     //TODO: Recorrer la colección y mostrar "> xx"
     std::string nickname;
@@ -160,7 +183,7 @@ void Menu::generarReserva() {
     }
 
     bool reservaOk = false;
-    //TODO: reservaOk = controlador->generarReserva(nickname, codigo, asientos)
+    reservaOk = controlador->generarReserva(nickname, codigo, asientos);
     if (reservaOk) {
         std::cout << "Reserva realizada exitosamente.\n";
     } else {
