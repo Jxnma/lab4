@@ -7,15 +7,18 @@
 #include "MnjUsuario.h"
 #include "MnjVehiculo.h"
 #include "MnjViaje.h"
+#include "DTListarViaje.h" 
+#include "IEliminarViaje.h"
 
 
 
-class CntViaje: public IAltaViaje {
+class CntViaje: public IAltaViaje, public IEliminarViaje {
 private:
     static CntViaje* instancia;
     MnjViaje* mnjViaje;
     MnjVehiculo* mnjVehiculo;
     MnjUsuario* mnjUsuario;
+    int codigoViaje;
     CntViaje();
 public:
     static CntViaje* getInstancia();
@@ -25,6 +28,7 @@ public:
     DTDetalleViaje* detalleViaje(int codigo);
     void eliminarViaje();
     void cancelarEliminarViaje();
+    std::set<DTListarViaje> listarViajes();
 };
 
 #endif

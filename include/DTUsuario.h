@@ -13,6 +13,7 @@ public:
 
     std::string getNickname() const;
     std::string getNombre() const;
+    bool operator<(const DTUsuario& otro) const;
 };
 
 #endif

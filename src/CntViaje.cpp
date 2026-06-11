@@ -4,6 +4,7 @@ CntViaje::CntViaje() {
     mnjUsuario = MnjUsuario::getInstance();
     mnjViaje = MnjViaje::getInstance();
     mnjVehiculo = MnjVehiculo::getInstancia();
+    codigoViaje = 0;
 }
 CntViaje* CntViaje::getInstancia() {
     if (instancia == nullptr) {
@@ -33,5 +34,22 @@ bool CntViaje::altaViaje(std::string matricula, DTFecha fecha, std::string orige
     v->asociarViaje(vi);
 
     return true;
+}
+
+void CntViaje::cancelarEliminarViaje() {
+    codigoViaje = 0;                         
+}
+
+std::set<DTListarViaje> CntViaje::listarViajes() {
+    // falta hacer
+}
+
+DTDetalleViaje* CntViaje::detalleViaje(int codigo) {
+    // falta hacer
+}
+
+
+void CntViaje::eliminarViaje() {
+    // falta hacer
 }
 
