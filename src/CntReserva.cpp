@@ -20,7 +20,8 @@ bool CntReserva::generarReserva(std::string nickname, int codigoViaje, int asien
         return false;
     MnjUsuario* mnju =MnjUsuario::getInstance();
     Pasajero* p = dynamic_cast<Pasajero*>(mnju->getUsuario(nickname));
-    if(p->tieneReserva(vi)) // el pasajero ya tiene una reserva para ese viaje
+    
+    if(p == nullptr || p->tieneReserva(vi))   // el pasajero ya tiene una reserva para ese viaje
         return false;
 
     Reserva* r = new Reserva(asientos, mnjv->getViaje(codigoViaje)->getFecha());
