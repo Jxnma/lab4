@@ -27,3 +27,7 @@ bool CntReserva::generarReserva(std::string nickname, int codigoViaje, int asien
     mnjUsuario->agregarReserva(nickname, r);
     return true;
 }
+
+std::set<std::string> CntReserva::listarPasajeros() {
+    return mnjUsuario->getPasajeros();
+}
