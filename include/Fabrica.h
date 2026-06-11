@@ -6,6 +6,7 @@
 #include "IAltaDeUsuario.h"
 #include "IGenerarReserva.h"
 #include "IAltaViaje.h"
+#include "IEliminarViaje.h"
 
 class Fabrica {
 private:
@@ -21,6 +22,7 @@ public:
     IAltaDeUsuario* getIAltaDeUsuario();
     IGenerarReserva* getIGenerarReserva();
     IAltaViaje* getIAltaViaje();
+    IEliminarViaje* getIEliminarViaje();
 };
 
 #endif
