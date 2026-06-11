@@ -26,6 +26,20 @@ Usuario* MnjUsuario::getUsuario(std::string nickname) {
     return nullptr;
 }
 
+std::set<std::string> MnjUsuario::getPasajeros() {
+    std::set<std::string> pasajeros;
+
+    for (auto const& [nickname, u] : this->usuarios) {
+        Pasajero* p = dynamic_cast<Pasajero*>(u);
+
+        if (p != nullptr) {
+            pasajeros.insert(nickname);
+        }
+    }
+
+    return pasajeros;
+}
+
 Usuario* MnjUsuario::registVehiCond(std::string nick, std::string matricula, int capacidad, std::string marca, std::string modelo, TipoVehiculo tipo) {
    Conductor* u = dynamic_cast<Conductor*>(getUsuario(nick));
     if (u != nullptr) {
