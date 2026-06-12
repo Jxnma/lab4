@@ -28,6 +28,7 @@ public:
     bool crearCalificacion(Usuario* uCalif, int vi, int cal, DTFecha fecha);
     void addRealiza(Calificacion* c);
     void addCalificacionRecibida(Calificacion* c);
+    float getCalificacionPromedio();
 };
 
 #endif

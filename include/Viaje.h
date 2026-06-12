@@ -36,6 +36,7 @@ public:
     float getPrecio();
     bool AsientosDisponibles(int asientosSolicitados);
     std::vector<Reserva*> getReservas();
+    bool chequearViaje(DTFecha fecha, std::string origen, std::string destino);
 };
 
 #endif

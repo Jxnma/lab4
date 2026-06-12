@@ -75,3 +75,11 @@ std::vector<DTUsuarioViaje> Viaje::getParticipantes(std::string nicknameCalifica
 std::vector<Reserva*> Viaje::getReservas() {
     return reservas;
 }
+
+bool Viaje::chequearViaje(DTFecha fecha, std::string origen, std::string destino) {
+    return this->fecha.getDia() == fecha.getDia() &&
+           this->fecha.getMes() == fecha.getMes() &&
+           this->fecha.getAnio() == fecha.getAnio() &&
+           this->origen == origen &&
+           this->destino == destino;
+}

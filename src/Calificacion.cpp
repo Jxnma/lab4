@@ -39,3 +39,7 @@ Usuario* Calificacion::getCalificador() {
 Reserva* Calificacion::getReserva() {
     return reserva;
 }
+
+int Calificacion::getPuntaje() {
+    return this->puntaje;
+}

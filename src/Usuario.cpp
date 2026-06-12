@@ -56,3 +56,17 @@ bool Usuario::crearCalificacion(Usuario* uCalificado, int codigoViaje, int cal, 
     c->addSobreReserva(r);
     return true;
 }
+
+float Usuario::getCalificacionPromedio() {
+    if (this->calificacionesRecibidas.empty()) {
+        return 0;
+    }
+
+    int suma = 0;
+
+    for (Calificacion* c : this->calificacionesRecibidas) {
+        suma += c->getPuntaje();
+    }
+
+    return (float)suma / this->calificacionesRecibidas.size();
+}

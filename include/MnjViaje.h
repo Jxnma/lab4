@@ -27,7 +27,7 @@ public:
     Viaje* getViaje(int codigo);
     bool existeViaje(int codigo);
     bool asientosDisp(Viaje* vi, int asientosSolicitados);
-    bool chequearViaje(DTFecha fecha, std::string origen, std::string destino);
+    bool chequearViajes(DTFecha fecha, std::string origen, std::string destino);
     std::map<int, Viaje*>& getViajes();
 };
 
