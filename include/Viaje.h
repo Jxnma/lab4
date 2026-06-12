@@ -35,6 +35,7 @@ public:
     int getAsientosPublicados();
     float getPrecio();
     bool AsientosDisponibles(int asientosSolicitados);
+    std::vector<Reserva*> getReservas();
 };
 
 #endif

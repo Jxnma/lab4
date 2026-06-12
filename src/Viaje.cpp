@@ -72,3 +72,6 @@ std::vector<DTUsuarioViaje> Viaje::getParticipantes(std::string nicknameCalifica
     
     return resultado;
 }
+std::vector<Reserva*> Viaje::getReservas() {
+    return reservas;
+}

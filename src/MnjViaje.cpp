@@ -62,6 +62,9 @@ bool MnjViaje::chequearViaje(DTFecha fecha, std::string origen, std::string dest
     }
     return false;
 }
+std::map<int, Viaje*>& MnjViaje::getViajes() {
+    return viajes;
+}
 
 
 
