@@ -20,20 +20,25 @@ std::string Usuario::getNombre() {
     return nombre;
 }
 
+void Usuario::addCalificacionRecibida(Calificacion* c) {
+    calificacionesRecibidas.insert(c);
+}
+
 bool Usuario::existeCalificacion(Usuario* uCalificado, int codVi) {
-    for (Calificacion* c : calificaciones) {
+    for (Calificacion* c : calificacionesRealizadas) {
         if (c->calificaA(uCalificado, codVi)) return true;
     }
     return false;
 }
 void Usuario::addRealiza(Calificacion* c) {
-    calificaciones.insert(c);
+    calificacionesRealizadas.insert(c);
 }
 // paso 5 del diagrama de comunicacion calificarUsuario
 bool Usuario::crearCalificacion(Usuario* uCalificado, int codigoViaje, int cal, DTFecha fecha) {
     Calificacion* c = new Calificacion(fecha, cal);
     this->addRealiza(c);
     c->addCalifica(uCalificado);
+    uCalificado->addCalificacionRecibida(c);
 
     // 5.4a si calificador es pasajero, busca su propia reserva
     Reserva* r = nullptr;

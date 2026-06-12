@@ -253,22 +253,32 @@ void Menu::calificarUsuario() {
         std::cout << "Codigo invalido.\n";
         return;
     }
-    //TODO: Coleccion de DTUsuarioViaje = Controlador->listarUsuariosViaje(codigo)
+    //listarUsuariosViaje
+    std::vector<DTUsuarioViaje> participantes = controlador->listarUsuariosViaje(codigo);
     //TODO: Recorrer la coleccion y mostrar "> Nickname: xx, Tipo: yyy"
+    std::cout << "\n--- Participantes del viaje ---\n";
+    for (const DTUsuarioViaje& p : participantes) {
+        std::cout << "> Nickname: " << p.getNickname() << ", Tipo: " << (p.getTipo() == TipoUsuario::Pasajero ? "Pasajero" : "Conductor") << "\n";
+    }
     std::string nicknameCalificado;
-    int calificacion;
     std::cout << "Ingrese nickname del usuario a calificar: "; std::getline(std::cin, nicknameCalificado);
-    std::cout << "Ingrese calificacion (1-5): "; std::cin >> calificacion;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     bool nicknameCalificadoValido = false;
-    //TODO: Validar nickname en listado
+    for (const DTUsuarioViaje& p : participantes) {
+    if (p.getNickname() == nicknameCalificado) {
+        nicknameCalificadoValido = true;
+        break;
+        }
+    }
     if (!nicknameCalificadoValido) {
         std::cout << "Nickname invalido.\n";
         return;
     }
+     int calificacion;
+    std::cout << "Ingrese calificacion (1-5): "; std::cin >> calificacion;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     bool calificacionOk = false;
-    //TODO: calificacionOk = Controlador->calificarUsuario(nicknameCalificado, calificacion)
+    calificacionOk = controlador->calificarUsuario(nicknameCalificado, calificacion);
     if (calificacionOk) {
         std::cout << "Calificacion exitosa.\n";
     } else {

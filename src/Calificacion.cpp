@@ -5,11 +5,16 @@
 Calificacion::Calificacion(DTFecha fecha, int puntaje) {
     this->fecha = fecha;
     this->puntaje = puntaje;
+    this->calificador = nullptr;
     this->calificado = nullptr;
     this->reserva = nullptr;
 }
 
 Calificacion::~Calificacion() {}
+
+void Calificacion::addCalificador(Usuario* u) {
+    this->calificador = u;
+}
 
 void Calificacion::addCalifica(Usuario* u) {
     this->calificado = u;
@@ -25,6 +30,9 @@ bool Calificacion::calificaA(Usuario* u, int codigoViaje) {
 
 Usuario* Calificacion::getUsuarioCalificado() {
     return calificado;
+}
+Usuario* Calificacion::getCalificador() {
+    return calificador;
 }
 
 Reserva* Calificacion::getReserva() {
