@@ -16,6 +16,7 @@ private:
     static MnjViaje* instancia;
     std::map<int, Viaje*> viajes;
     MnjViaje();
+    
 
 public:
     static MnjViaje* getInstance();
@@ -27,6 +28,7 @@ public:
     bool existeViaje(int codigo);
     bool asientosDisp(Viaje* vi, int asientosSolicitados);
     bool chequearViaje(DTFecha fecha, std::string origen, std::string destino);
+    std::map<int, Viaje*>& getViajes();
 };
 
 #endif

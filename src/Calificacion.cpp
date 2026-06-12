@@ -22,6 +22,7 @@ void Calificacion::addCalifica(Usuario* u) {
 
 void Calificacion::addSobreReserva(Reserva* r) {
     this->reserva = r;
+    r->addCalificacion(this);
 }
 
 bool Calificacion::calificaA(Usuario* u, int codigoViaje) {

@@ -28,7 +28,7 @@ public:
     DTDetalleViaje* detalleViaje(int codigo);
     void eliminarViaje();
     void cancelarEliminarViaje();
-    std::set<DTListarViaje> listarViajes();
+    std::vector<DTListarViaje> CntViaje::listarViajes();
 };
 
 #endif

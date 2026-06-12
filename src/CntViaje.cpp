@@ -46,12 +46,60 @@ void CntViaje::cancelarEliminarViaje() {
     codigoViaje = 0;                         
 }
 
-std::set<DTListarViaje> CntViaje::listarViajes() {
-    // falta hacer
+std::vector<DTListarViaje> CntViaje::listarViajes() {
+    std::vector<DTListarViaje> resultado;
+    MnjViaje* m = MnjViaje::getInstance();
+    
+    for (auto& [codigo, vi] : m->getViajes()) {
+        Vehiculo* v = vi->getVehiculo();
+        Conductor* c = v->getConductor();
+        DTListarViaje dtv(
+            vi->getCodigo(),
+            vi->getFecha(),
+            vi->getOrigen(),
+            vi->getDestino(),
+            c->getNickname()
+        );
+        resultado.push_back(dtv);
+    }
+    return resultado;
 }
 
 DTDetalleViaje* CntViaje::detalleViaje(int codigo) {
-    // falta hacer
+    // guardar en memoria
+    this->codigoViaje = codigo;
+
+    Viaje* vi = mnjViaje->getViaje(codigo);
+    Vehiculo* v = vi->getVehiculo();
+
+    DTDetalleVehiculo dtv(
+        v->getMatricula(),
+        v->getCapacidad(),
+        v->getMarca(),
+        v->getModelo(),
+        v->getTipo()
+    );
+
+    std::vector<DTDetalleReserva> reservas;
+    for (Reserva* r : vi->getReservas()) {
+        DTDetalleReserva dtr(
+            r->getAsientosReservados(),
+            r->getFecha(),
+            r->getPasajero()->getNickname()
+        );
+        reservas.push_back(dtr);
+    }
+
+    return new DTDetalleViaje(
+        vi->getCodigo(),
+        vi->getFecha(),
+        vi->getOrigen(),
+        vi->getDestino(),
+        vi->getAsientosPublicados(),
+        vi->getPrecio(),
+        dtv,
+        reservas
+    );
 }
 
 

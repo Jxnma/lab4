@@ -31,5 +31,6 @@ bool CntReserva::generarReserva(std::string nickname, int codigoViaje, int asien
 }
 
 std::set<std::string> CntReserva::listarPasajeros() {
+    MnjUsuario* mnjUsuario = MnjUsuario::getInstance();
     return mnjUsuario->getPasajeros();
 }
