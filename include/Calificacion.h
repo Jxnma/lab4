@@ -24,6 +24,7 @@ public:
     Usuario* getUsuarioCalificado();
     Usuario* getCalificador();
     Reserva* getReserva();
+    int getPuntaje();
 };
 
 #endif

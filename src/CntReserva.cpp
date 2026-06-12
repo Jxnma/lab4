@@ -34,3 +34,28 @@ std::set<std::string> CntReserva::listarPasajeros() {
     MnjUsuario* mnjUsuario = MnjUsuario::getInstance();
     return mnjUsuario->getPasajeros();
 }
+
+std::set<DTConsultaViaje> CntReserva::consultarViajes(DTFecha fecha, std::string origen, std::string destino, int asientos) {
+    std::set<DTConsultaViaje> resultado;
+    MnjViaje* mnjViaje = MnjViaje::getInstance();
+    std::map<int, Viaje*> viajes = mnjViaje->getViajes();
+
+    for (auto const& [codigo, vi] : viajes) {
+        if (vi->chequearViaje(fecha, origen, destino) && vi->AsientosDisponibles(asientos))
+        {
+            Vehiculo* v = vi->getVehiculo();
+            Conductor* c = v->getConductor();
+
+            DTConsultaViaje dtcv(
+            vi->getCodigo(),
+            v->getMarca(),
+            v->getModelo(),
+            c->getNombre(),
+            c->getCalificacionPromedio(),
+            vi->getPrecio() * asientos);
+
+            resultado.insert(dtcv);
+        }    
+    }
+    return resultado;
+}

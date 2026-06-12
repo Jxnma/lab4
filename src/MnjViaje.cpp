@@ -49,7 +49,7 @@ bool MnjViaje::asientosDisp(Viaje* vi, int asientosSolicitados) {
     return vi->AsientosDisponibles(asientosSolicitados);
 }
 
-bool MnjViaje::chequearViaje(DTFecha fecha, std::string origen, std::string destino) {
+bool MnjViaje::chequearViajes(DTFecha fecha, std::string origen, std::string destino) {
     for (auto it = viajes.begin(); it != viajes.end(); ++it) {
         Viaje* vi = it->second;
         if (vi->getFecha().getDia() == fecha.getDia() &&
