@@ -4,9 +4,6 @@
 #include "IAltaViaje.h"
 #include "DTDetalleViaje.h"
 #include "DTVehiculosConductor.h"
-#include "MnjUsuario.h"
-#include "MnjVehiculo.h"
-#include "MnjViaje.h"
 #include "DTListarViaje.h" 
 #include "IEliminarViaje.h"
 
@@ -15,9 +12,6 @@
 class CntViaje: public IAltaViaje, public IEliminarViaje {
 private:
     static CntViaje* instancia;
-    MnjViaje* mnjViaje;
-    MnjVehiculo* mnjVehiculo;
-    MnjUsuario* mnjUsuario;
     int codigoViaje;
     CntViaje();
 public:
