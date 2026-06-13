@@ -6,6 +6,7 @@
 #include "../include/Pasajero.h"
 #include "../include/Viaje.h"
 #include "../include/Vehiculo.h"
+#include <vector>
 
 CntViaje* CntViaje::instancia = nullptr;
 CntViaje::CntViaje() {
