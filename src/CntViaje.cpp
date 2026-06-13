@@ -5,9 +5,6 @@
 
 CntViaje* CntViaje::instancia = nullptr;
 CntViaje::CntViaje() {
-    mnjUsuario = MnjUsuario::getInstance();
-    mnjViaje = MnjViaje::getInstance();
-    mnjVehiculo = MnjVehiculo::getInstancia();
     codigoViaje = 0;
 }
 CntViaje* CntViaje::getInstancia() {
@@ -68,8 +65,8 @@ std::vector<DTListarViaje> CntViaje::listarViajes() {
 DTDetalleViaje* CntViaje::detalleViaje(int codigo) {
     // guardar en memoria
     this->codigoViaje = codigo;
-
-    Viaje* vi = mnjViaje->getViaje(codigo);
+    MnjViaje* m = MnjViaje::getInstance();
+    Viaje* vi = m->getViaje(codigo);
     Vehiculo* v = vi->getVehiculo();
 
     DTDetalleVehiculo dtv(
