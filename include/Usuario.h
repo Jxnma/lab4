@@ -29,6 +29,8 @@ public:
     void addRealiza(Calificacion* c);
     void addCalificacionRecibida(Calificacion* c);
     float getCalificacionPromedio();
+    void removeCalificacionRealizada(Calificacion* c);
+    void removeCalificacionRecibida(Calificacion* c);
 };
 
 #endif

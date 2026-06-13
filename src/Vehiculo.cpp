@@ -56,4 +56,11 @@ bool Vehiculo::hayViajesFecha(DTFecha fecha){
     }
     return false;
     }
-
+void Vehiculo::removeViaje(Viaje* vi) {
+    for (auto it = viajes.begin(); it != viajes.end(); ++it) {
+        if (*it == vi) {
+            viajes.erase(it);
+            break;
+        }
+    }
+}

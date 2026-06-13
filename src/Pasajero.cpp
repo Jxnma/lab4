@@ -62,3 +62,6 @@ std::set<DTListarViaje> Pasajero::getViajes() {
     }
     return dtvis;
 }
+void Pasajero::removeReserva(Reserva* r) {
+    Reservas.erase(r);
+}

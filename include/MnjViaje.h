@@ -29,6 +29,7 @@ public:
     bool asientosDisp(Viaje* vi, int asientosSolicitados);
     bool chequearViajes(DTFecha fecha, std::string origen, std::string destino);
     std::map<int, Viaje*>& getViajes();
+    void eliminarViaje(int codigo);
 };
 
 #endif

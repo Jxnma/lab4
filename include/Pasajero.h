@@ -23,6 +23,7 @@ public:
     void addReserva(Reserva* r);
     Reserva* getReserva(int codigoViaje);// para calificarUsuario paso 5.4a movi para pasajero.h, por ende no lleva parametro del pasajero
     std::set<Reserva*> getReservas();
+    void removeReserva(Reserva* r);
 };
 
 #endif
