@@ -3,6 +3,7 @@
 #include "../include/MnjUsuario.h"
 
 CntReserva* CntReserva::instancia = nullptr;
+CntReserva::CntReserva() {}
 
 CntReserva* CntReserva::getInstancia() {
     if (instancia == nullptr) {

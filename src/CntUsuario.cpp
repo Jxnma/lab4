@@ -1,6 +1,7 @@
 #include "../include/CntUsuario.h"
 
 CntUsuario* CntUsuario::instancia = nullptr;
+CntUsuario::CntUsuario() {}
 
 CntUsuario* CntUsuario::getInstance(){
     if (instancia == nullptr) {
@@ -8,6 +9,7 @@ CntUsuario* CntUsuario::getInstance(){
     }
     return instancia;
 }
+CntUsuario::~CntUsuario() {}
 
 bool CntUsuario::altaPasajero(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::string ci) {
     MnjUsuario* mu = MnjUsuario::getInstance();                          

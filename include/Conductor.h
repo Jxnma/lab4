@@ -19,7 +19,6 @@ public:
     ~Conductor();
     DTUsuarioViaje getDTUsuarioViaje() const;
     std::set<Vehiculo*> getVehiculos() const;
-    DTUsuarioViaje getDTUsuarioViaje();
     bool tieneLibreta(TipoLibreta tipo);
     std::set<DTVehiculosConductor> listarVehiculos();
     void agregarVehiculo(Vehiculo* v); 

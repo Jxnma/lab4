@@ -96,28 +96,20 @@ void Menu::altaViaje() {
     std::cout << "Ingrese nickname del conductor: "; std::getline(std::cin, nickname);
     std::set<DTVehiculosConductor> vehiculos = controlador->listarVehiculosConductor(nickname);
 
-   
-    for (DTVehiculosConductor dtv : vehiculos){
-        for (DTDetalleVehiculo v : dtv.getVehiculos()){
-            std::cout << "> Matricula: " << v.getMatricula() << ", Capacidad: " << v.getCapacidad()
-                      << ", Marca: "     << v.getMarca()     << ", Modelo: " << v.getModelo() 
-                      << ", Tipo: " << (v.getTipo() == Auto ? "Auto" : "Moto") << "\n";
-        }
+    for (DTVehiculosConductor v : vehiculos) {
+        std::cout << "> Matricula: " << v.getMatricula()
+                  << ", Capacidad: " << v.getCapacidad()
+                  << ", Modelo: " << v.getModelo() << "\n";
     }
-
 
     std::cout << "Ingrese matricula del vehiculo a utilizar: "; std::getline(std::cin, matricula);
     bool matriculaValida = false;
-    for (DTVehiculosConductor dtv : vehiculos){
-        for (DTDetalleVehiculo v : dtv.getVehiculos()){
-            if(dtv.getMatricula() == matricula){
-                matriculaValida == true;
-                break;
-            }
-         
+    for (DTVehiculosConductor v : vehiculos) {
+        if (v.getMatricula() == matricula) {
+            matriculaValida = true;
+            break;
         }
-        if(matriculaValida)  break;
-    }   
+    }  
     if (!matriculaValida) {
         std::cout << "Matricula invalida.\n";
         return;
