@@ -1,6 +1,6 @@
 #ifndef IELIMINARVIAJE_H
 #define IELIMINARVIAJE_H
-#include <set>
+#include <vector>
 #include "DTListarViaje.h"
 #include "DTDetalleViaje.h"
 
