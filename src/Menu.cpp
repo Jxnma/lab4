@@ -8,6 +8,8 @@
 #include "../include/DTFecha.h"
 #include "../include/TipoLibreta.h"
 #include "../include/TipoVehiculo.h"
+#include "../include/IGenerarReserva.h"
+#include "../include/DTConsultaViaje.h"
 #include <iostream>
 #include <limits>
 #include <string>
@@ -129,13 +131,26 @@ void Menu::altaViaje() {
 void Menu::generarReserva() {
     Fabrica* fabrica = Fabrica::getInstance();
     IGenerarReserva* controlador = fabrica->getIGenerarReserva();
-    //TODO: Colecion de String = controlador->listarPasajeros()
-    //TODO: Recorrer la colección y mostrar "> xx"
+    
+    std::set<std::string> pasajeros = controlador->listarPasajeros();
+    for (const std::string& p : pasajeros) {
+        std::cout << "> " << p << "\n";
+    }
+    if (pasajeros.empty()) {
+        std::cout << "No hay pasajeros registrados.\n";
+        return;
+    }
+
     std::string nickname;
     std::cout << "Ingrese nickname del pasajero: "; std::getline(std::cin, nickname);
 
     bool nicknameValido = false;
-    //TODO: Validar nickname en listado
+    for (const std::string& p : pasajeros) {
+        if (p == nickname) {
+            nicknameValido = true;
+            break;
+        }
+    }
     if (!nicknameValido) {
         std::cout << "Nickname invalido.\n";
         return;
@@ -150,10 +165,23 @@ void Menu::generarReserva() {
     std::cout << "Ingrese cantidad de asientos a reservar: "; std::cin >> asientos;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    //TODO: Coleccion de DTConsultaViaje = controlador->consultarViajes(DTFecha(dia, mes, anio), origen, destino, asientos)
-    //TODO: Recorrer la coleccion y mostrar: "> Codigo: xx, Marca: yy, Modelo: zzz, Conductor: aaa, CalificacionPromedio: qqq, PrecioTotal: eee"
+    std::set<DTConsultaViaje> viajes = controlador->consultarViajes(
+    DTFecha(dia, mes, anio),
+    origen,
+    destino,
+    asientos
+    );
 
-    bool hayViajes = false;//TODO: Validar coleccion vacía
+    for (DTConsultaViaje v : viajes) {
+        std::cout << "> Codigo: " << v.getCodigo()
+              << ", Marca: " << v.getMarca()
+              << ", Modelo: " << v.getModelo()
+              << ", Conductor: " << v.getConductor()
+              << ", CalificacionPromedio: " << v.getCalificacionProm()
+              << ", PrecioTotal: " << v.getPrecioTotal()
+              << "\n";
+    }
+    bool hayViajes = !viajes.empty();
     if (!hayViajes) {
         std::cout << "No hay viajes disponibles.\n";
         return;
@@ -163,7 +191,12 @@ void Menu::generarReserva() {
     std::cout << "Ingrese codigo del viaje a reservar: "; std::cin >> codigo;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     bool codigoValido = false;
-    //TODO: Validar codigo en listado
+    for (DTConsultaViaje v : viajes) {
+        if (v.getCodigo() == codigo) {
+            codigoValido = true;
+            break;
+        }
+    }
     if (!codigoValido) {
         std::cout << "Codigo invalido.\n";
         return;
