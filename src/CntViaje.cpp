@@ -2,13 +2,17 @@
 #include "../include/MnjUsuario.h"
 #include "../include/MnjVehiculo.h"
 #include "../include/MnjViaje.h"
+#include "../include/Calificacion.h"
+#include "../include/Pasajero.h"
+#include "../include/Viaje.h"
+#include "../include/Vehiculo.h"
 #include <vector>
 
 CntViaje* CntViaje::instancia = nullptr;
 CntViaje::CntViaje() {
     codigoViaje = 0;
 }
-CntViaje* CntViaje::getInstancia() {
+CntViaje* CntViaje::getInstance(){
     if (instancia == nullptr) {
         instancia = new CntViaje();
     }
@@ -102,6 +106,35 @@ DTDetalleViaje* CntViaje::detalleViaje(int codigo) {
 
 
 void CntViaje::eliminarViaje() {
-    // falta hacer
+    MnjViaje* m = MnjViaje::getInstance();
+    Viaje* vi = m->getViaje(codigoViaje);
+    Vehiculo* v = vi->getVehiculo();
+
+    // recorrer reservas del viaje
+    for (Reserva* r : vi->getReservas()) {
+
+        // eliminar links de calificaciones a usuarios
+        for (Calificacion* c : r->getCalificaciones()) {
+            Usuario* calificador = c->getCalificador();
+            Usuario* calificado = c->getUsuarioCalificado();
+
+            if (calificador != nullptr)
+                calificador->removeCalificacionRealizada(c);
+            if (calificado != nullptr)
+                calificado->removeCalificacionRecibida(c);
+
+            delete c;
+        }
+
+        Pasajero* p = r->getPasajero();
+        if (p != nullptr)
+            p->removeReserva(r);
+
+        delete r;
+    }
+
+    v->removeViaje(vi);
+    m->eliminarViaje(codigoViaje);
+    codigoViaje = 0;
 }
 

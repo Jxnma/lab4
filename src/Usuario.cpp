@@ -70,3 +70,10 @@ float Usuario::getCalificacionPromedio() {
 
     return (float)suma / this->calificacionesRecibidas.size();
 }
+void Usuario::removeCalificacionRealizada(Calificacion* c) {
+    calificacionesRealizadas.erase(c);
+}
+
+void Usuario::removeCalificacionRecibida(Calificacion* c) {
+    calificacionesRecibidas.erase(c);
+}
