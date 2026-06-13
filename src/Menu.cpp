@@ -47,13 +47,8 @@ void Menu::altaUsuario() {
         std::cout << "Ingrese libreta (0: MotoProfesional, 1: MotoAmateur, 2: AutoProfesional, 3: AutoAmateur) -1 para terminar: ";
         std::cin >> lib;
         while (lib != -1) {
-            if (lib >= 0 && lib <= 3) { 
-                libretas.insert((TipoLibreta)lib);
-            }
-            else {
-            std::cout << "Libreta invalida.\n";
-            }
-        std::cin >> lib;
+            libretas.insert((TipoLibreta)lib);
+            std::cin >> lib;
         }
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         usuarioOk = controlador->altaConductor(nickname, nombre, contrasena, email, libretas);
