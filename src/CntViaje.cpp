@@ -2,6 +2,7 @@
 #include "../include/MnjUsuario.h"
 #include "../include/MnjVehiculo.h"
 #include "../include/MnjViaje.h"
+#include <vector>
 
 CntViaje* CntViaje::instancia = nullptr;
 CntViaje::CntViaje() {
