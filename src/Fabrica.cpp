@@ -31,9 +31,9 @@ ICalificarUsuario* Fabrica::getICalificarUsuario() {
  }
 
  IAltaViaje* Fabrica::getIAltaViaje(){
-    return CntViaje::getInstancia();
+    return CntViaje::getInstance();
 }
 
 IEliminarViaje* Fabrica::getIEliminarViaje() {
-    return CntViaje::getInstancia();
+    return CntViaje::getInstance();
 }
