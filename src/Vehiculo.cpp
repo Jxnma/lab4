@@ -51,7 +51,7 @@ void Vehiculo::asociarViaje(Viaje* vi){
 }
 bool Vehiculo::hayViajesFecha(DTFecha fecha){
     for(Viaje* v : viajes){
-        if(v!=nullptr and (v->getFecha() == fecha)) 
+        if(v!=nullptr && (v->getFecha() == fecha)) 
         return true;
     }
     return false;

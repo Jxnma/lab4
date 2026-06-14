@@ -29,10 +29,10 @@ bool Conductor::tieneLibreta(TipoLibreta tipo) {
 std::set<DTListarViaje> Conductor::getViajes() {
     std::set<DTListarViaje> dtvis;
     
-    std::set<Vehiculo*> vehiculos = this->getVehiculos(); 
+    std::set<Vehiculo*> listaVehiculos = this->getVehiculos(); 
     std::set<Vehiculo*>::iterator it;
     
-    for (it = vehiculos.begin(); it != vehiculos.end(); ++it) {
+    for (it = listaVehiculos.begin(); it != listaVehiculos.end(); ++it) {
         Vehiculo* v = *it; 
 
         std::vector<Viaje*> viajes= v->getViajes();
@@ -69,7 +69,7 @@ std::set<DTListarViaje> Conductor::getViajes() {
 
 bool Conductor::hayViajesFechaConductor(DTFecha fecha){
     for(Vehiculo* v : vehiculos){
-        if(v!=nullptr and v->hayViajesFecha(fecha)) 
+        if(v!=nullptr && v->hayViajesFecha(fecha)) 
         return true;
     }
     return false;

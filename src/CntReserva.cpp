@@ -25,7 +25,7 @@ bool CntReserva::generarReserva(std::string nickname, int codigoViaje, int asien
     if(p == nullptr || p->tieneReserva(vi))   // el pasajero ya tiene una reserva para ese viaje
         return false;
 
-    Reserva* r = new Reserva(asientos, mnjv->getViaje(codigoViaje)->getFecha());
+    Reserva* r = new Reserva(asientos, vi->getFecha());
     mnjv->agregarReserva(vi, r);
     mnju->agregarReserva(nickname, r);
     return true;

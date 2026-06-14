@@ -1,6 +1,7 @@
 #ifndef CNTVIAJE_H
 #define CNTVIAJE_H
 #include <set>
+#include <vector>
 #include "IAltaViaje.h"
 #include "DTDetalleViaje.h"
 #include "DTVehiculosConductor.h"

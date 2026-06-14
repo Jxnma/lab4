@@ -1,7 +1,7 @@
 #ifndef IGenerarReserva_H
 #define IGenerarReserva_H
 
-#include "DTListarViaje.h"
+#include "DTFecha.h"
 #include "DTConsultaViaje.h"
 #include <string>
 #include <set>

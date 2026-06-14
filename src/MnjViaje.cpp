@@ -22,7 +22,7 @@ MnjViaje::~MnjViaje() {
 
 Viaje* MnjViaje::crearViaje(Vehiculo* v, DTFecha fecha, std::string origen, std::string destino, int asientosPublicados, float precio){
     int numCodigo = 1;
-    if(viajes.empty()){
+    if(!viajes.empty()){
         numCodigo = viajes.rbegin()->first + 1;
     }
     Viaje* vi = new Viaje(numCodigo, fecha, origen, destino, asientosPublicados, precio);

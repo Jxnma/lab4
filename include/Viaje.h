@@ -6,7 +6,6 @@
 #include "DTFecha.h"
 #include <string>
 #include <vector>
-#include "DTUsuarioViaje.h"
 
 class Vehiculo;
 
