@@ -26,6 +26,8 @@ bool CntReserva::generarReserva(std::string nickname, int codigoViaje, int asien
         return false;
 
     Reserva* r = new Reserva(asientos, vi->getFecha());
+    r->setViaje(vi);      
+    r->setPasajero(p);
     mnjv->agregarReserva(vi, r);
     mnju->agregarReserva(nickname, r);
     return true;
