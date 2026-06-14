@@ -1,6 +1,7 @@
 #include "../include/CntReserva.h"
 #include "../include/MnjViaje.h"
 #include "../include/MnjUsuario.h"
+#include "../include/ControladorFechaActual.h"
 
 CntReserva* CntReserva::instancia = nullptr;
 CntReserva::CntReserva() {}
@@ -25,7 +26,8 @@ bool CntReserva::generarReserva(std::string nickname, int codigoViaje, int asien
     if(p == nullptr || p->tieneReserva(vi))   // el pasajero ya tiene una reserva para ese viaje
         return false;
 
-    Reserva* r = new Reserva(asientos, vi->getFecha());
+    DTFecha fechaActual = ControladorFechaActual::getInstance()->getFecha();
+    Reserva* r = new Reserva(asientos, fechaActual);
     r->setViaje(vi);      
     r->setPasajero(p);
     mnjv->agregarReserva(vi, r);

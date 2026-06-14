@@ -132,7 +132,4 @@ void CargaDatos::cargarDatos() {
 
     datosCargados = true;
     std::cout << "Datos cargados exitosamente.\n";
-    
-    datosCargados = true;
-    std::cout << "Datos cargados exitosamente.\n";
 }

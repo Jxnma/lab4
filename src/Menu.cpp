@@ -103,8 +103,8 @@ void Menu::altaViaje() {
 
     for (DTVehiculosConductor v : vehiculos) {
         std::cout << "> Matricula: " << v.getMatricula()
-                  << ", Capacidad: " << v.getCapacidad()
-                  << ", Modelo: " << v.getModelo() << "\n";
+                  << ", Modelo: " << v.getModelo()
+                  << ", Capacidad: " << v.getCapacidad() << "\n";
     }
 
     std::cout << "Ingrese matricula del vehiculo a utilizar: "; std::getline(std::cin, matricula);
@@ -336,14 +336,14 @@ void Menu::eliminarViaje() {
     DTDetalleViaje* DTViaje= controlador->detalleViaje(codigo);
     
     std::cout << ">> Viaje <<\n";
-    std::cout << "--- Matricula: " << DTViaje->getCodigo()
+    std::cout << "--- Codigo: " << DTViaje->getCodigo()
               << ", Fecha: " << DTViaje->getFecha()
               << ", Origen: " << DTViaje->getOrigen()
               << ", Destino: " << DTViaje->getDestino()
               << ", Capacidad: " << DTViaje->getAsientosPublicados()
               << ", Precio por asiento: " << DTViaje->getPrecio() << "\n";
     DTDetalleVehiculo DTVehiculo = DTViaje->getVehiculo();
-    std::cout << ">> Vehiculo <<";
+    std::cout << "\n>> Vehiculo <<\n";
     std::cout << "--- Matricula: " << DTVehiculo.getMatricula()
               << ", Capacidad: " << DTVehiculo.getCapacidad()
               << ", Marca: " << DTVehiculo.getMarca()
@@ -352,7 +352,7 @@ void Menu::eliminarViaje() {
     
      std::cout << ">> Reservas <<\n";
      for (DTDetalleReserva r : DTViaje->getReservas()) {
-        std::cout << "---AsientosReservados: " << r.getAsientosReservados()
+        std::cout << "--- AsientosReservados: " << r.getAsientosReservados()
                   << ", Fecha: " << r.getFecha()
                   << ", Pasajero: " << r.getPasajero() << "\n";
      }
