@@ -222,7 +222,6 @@ void Menu::calificarUsuario() {
     for (const DTUsuario& u : usuarios) {
         std::cout << "> Nickname: " << u.getNickname() << ", Nombre: " << u.getNombre() << "\n";
     }
-    std::cout << "---------------------------\n";
 
     std::string nickname;
     std::cout << "Ingrese su nickname: "; std::getline(std::cin, nickname);
@@ -269,7 +268,6 @@ void Menu::calificarUsuario() {
     }
     //listarUsuariosViaje
     std::vector<DTUsuarioViaje> participantes = controlador->listarUsuariosViaje(codigo);
-    std::cout << "\n--- Participantes del viaje ---\n";
     for (const DTUsuarioViaje& p : participantes) {
         std::cout << "> Nickname: " << p.getNickname() << ", Tipo: " << (p.getTipo() == TipoUsuario::Pasajero ? "Pasajero" : "Conductor") << "\n";
     }
