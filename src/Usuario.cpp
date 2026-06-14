@@ -59,7 +59,7 @@ bool Usuario::crearCalificacion(Usuario* uCalificado, int codigoViaje, int cal, 
 
 float Usuario::getCalificacionPromedio() {
     if (this->calificacionesRecibidas.empty()) {
-        return 0;
+        return 5;
     }
 
     int suma = 0;
