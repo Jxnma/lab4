@@ -16,7 +16,7 @@ private:
     int codigoViaje;
     CntViaje();
 public:
-    static CntViaje* getInstancia();
+    static CntViaje* getInstance();
     ~CntViaje();
     std::set<DTVehiculosConductor> listarVehiculosConductor(std::string nick);
     bool altaViaje(std::string matricula, DTFecha fecha, std::string origen, std::string destino, int asientos, float precio);

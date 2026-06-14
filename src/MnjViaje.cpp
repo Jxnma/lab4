@@ -65,6 +65,13 @@ bool MnjViaje::chequearViajes(DTFecha fecha, std::string origen, std::string des
 std::map<int, Viaje*>& MnjViaje::getViajes() {
     return viajes;
 }
+void MnjViaje::eliminarViaje(int codigo) {
+    auto it = viajes.find(codigo);
+    if (it != viajes.end()) {
+        delete it->second;
+        viajes.erase(it);
+    }
+}
 
 
 

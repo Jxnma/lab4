@@ -34,6 +34,7 @@ public:
     void asociarViaje(Viaje* vi);
     bool hayViajesConductor(DTFecha fecha);
     bool hayViajesFecha(DTFecha fecha);
+    void removeViaje(Viaje* vi);
 };
 
 #endif
