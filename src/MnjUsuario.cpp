@@ -13,7 +13,10 @@ MnjUsuario* MnjUsuario::getInstance(){
 std::set<DTUsuario> MnjUsuario::getUsuarios() {
     std::set<DTUsuario> dtus;
     for (auto const& [nickname, u] : this->usuarios) {
-        DTUsuario dtu(u->getNickname(), u->getNombre());
+        TipoUsuario t = (dynamic_cast<Conductor*>(u) != nullptr)
+                            ? TipoUsuario::Conductor
+                            : TipoUsuario::Pasajero;
+        DTUsuario dtu(u->getNickname(), u->getNombre(), t);
         dtus.insert(dtu);
     }
     return dtus;

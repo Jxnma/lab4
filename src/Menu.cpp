@@ -341,7 +341,7 @@ void Menu::eliminarViaje() {
               << ", AsientosPublicados: " << DTViaje->getAsientosPublicados()
               << ", Precio por asiento: " << DTViaje->getPrecio() << "\n";
     DTDetalleVehiculo DTVehiculo = DTViaje->getVehiculo();
-    std::cout << "\n>> Vehiculo <<\n";
+    std::cout << ">> Vehiculo <<\n";
     std::cout << "--- Matricula: " << DTVehiculo.getMatricula()
               << ", Capacidad: " << DTVehiculo.getCapacidad()
               << ", Marca: " << DTVehiculo.getMarca()
