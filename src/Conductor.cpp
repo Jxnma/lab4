@@ -61,7 +61,7 @@ std::set<DTListarViaje> Conductor::getViajes() {
  std::set<DTVehiculosConductor> Conductor:: listarVehiculos(){
     std::set<DTVehiculosConductor> res;
     for(Vehiculo* v : vehiculos){
-        DTVehiculosConductor dt(v->getMatricula(),v->getMarca(), v->getCapacidad());
+        DTVehiculosConductor dt(v->getMatricula(),v->getModelo(), v->getCapacidad());
         res.insert(dt);
     }
     return res;

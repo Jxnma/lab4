@@ -55,6 +55,12 @@ bool Viaje::AsientosDisponibles(int asientosSolicitados) {
 
 std::vector<DTUsuarioViaje> Viaje::getParticipantes(std::string nicknameCalificador) {
     std::vector<DTUsuarioViaje> resultado;
+    Conductor* c = vehiculo->getConductor();
+    DTUsuarioViaje dtConductor = c->getDTUsuarioViaje();
+    if (dtConductor.getNickname() != nicknameCalificador) {  // filtro acá también
+        resultado.push_back(dtConductor);
+    }
+
     for (Reserva* r : reservas) {
         auto dts = r->getDTUPasajeros();
         for (const auto& dt : dts) {
@@ -63,13 +69,6 @@ std::vector<DTUsuarioViaje> Viaje::getParticipantes(std::string nicknameCalifica
             }
         }
     }
-    
-    Conductor* c = vehiculo->getConductor();
-    DTUsuarioViaje dtConductor = c->getDTUsuarioViaje();
-    if (dtConductor.getNickname() != nicknameCalificador) {  // filtro acá también
-        resultado.push_back(dtConductor);
-    }
-    
     return resultado;
 }
 std::vector<Reserva*> Viaje::getReservas() {

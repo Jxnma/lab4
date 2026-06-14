@@ -48,7 +48,7 @@ void Menu::altaUsuario() {
     int lib;
     int continuar = 1;
     while (continuar == 1) {
-        std::cout << "=== Registrar Libreta ===\n";
+        std::cout << "\n=== Registrar Libreta ===\n";
         std::cout << "0. Moto (Profesional)\n";
         std::cout << "1. Moto (Amateur)\n";
         std::cout << "2. Auto (Profesional)\n";
@@ -103,7 +103,7 @@ void Menu::altaViaje() {
 
     for (DTVehiculosConductor v : vehiculos) {
         std::cout << "> Matricula: " << v.getMatricula()
-                  << ", Modelo: " << v.getModelo()
+                  << ", Modelo: " << v.getModelo() 
                   << ", Capacidad: " << v.getCapacidad() << "\n";
     }
 
@@ -226,7 +226,6 @@ void Menu::calificarUsuario() {
     ICalificarUsuario* controlador = fabrica->getICalificarUsuario();
     std::set<DTUsuario> usuarios = controlador->listarUsuarios();
 
-    std::cout << "\n Listado de Usuarios \n";
     for (const DTUsuario& u : usuarios) {
         std::cout << "> Nickname: " << u.getNickname() << ", Nombre: " << u.getNombre() << "\n";
     }
@@ -249,7 +248,6 @@ void Menu::calificarUsuario() {
 
     std::set<DTListarViaje> viajes = controlador->listarViajes(nickname);
 
-    std::cout << "\n--- Viajes asociados a " << nickname << " ---\n";
     for (DTListarViaje v : viajes) {
         
         std::cout << "> Codigo: " << v.getCodigo() 
@@ -340,7 +338,7 @@ void Menu::eliminarViaje() {
               << ", Fecha: " << DTViaje->getFecha()
               << ", Origen: " << DTViaje->getOrigen()
               << ", Destino: " << DTViaje->getDestino()
-              << ", Capacidad: " << DTViaje->getAsientosPublicados()
+              << ", AsientosPublicados: " << DTViaje->getAsientosPublicados()
               << ", Precio por asiento: " << DTViaje->getPrecio() << "\n";
     DTDetalleVehiculo DTVehiculo = DTViaje->getVehiculo();
     std::cout << "\n>> Vehiculo <<\n";

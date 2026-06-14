@@ -33,6 +33,8 @@ void CargaDatos::cargarDatos() {
     std::cout << "Cargando datos harcodeados del sistema...\n";
     // ... (inserción de usuarios, vehículos, viajes, reservas) ...
     Fabrica* f = Fabrica::getInstance();
+    IControladorFechaActual* cntFecha = f->getIControladorFechaActual();
+    cntFecha->setFecha(DTFecha(14,3,2026));
     IAltaDeUsuario* cntUsuario = f->getIAltaDeUsuario();
     IAltaViaje* cntViaje = f->getIAltaViaje();
     IGenerarReserva* cntReserva = f->getIGenerarReserva();
