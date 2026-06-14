@@ -43,18 +43,26 @@ void Menu::altaUsuario() {
         std::string ci;
         std::cout << "Ingrese CI: "; std::getline(std::cin, ci);
         usuarioOk = controlador->altaPasajero(nickname, nombre, contrasena, email, ci);
-    } else if (tipoUsuario == 2) {
-        std::set<TipoLibreta> libretas;
-        int lib;
-        std::cout << "Ingrese libreta (0: MotoProfesional, 1: MotoAmateur, 2: AutoProfesional, 3: AutoAmateur) -1 para terminar: ";
+    }  else if (tipoUsuario == 2) {
+    std::set<TipoLibreta> libretas;
+    int lib;
+    int continuar = 1;
+    while (continuar == 1) {
+        std::cout << "=== Registrar Libreta ===\n";
+        std::cout << "0. Moto (Profesional)\n";
+        std::cout << "1. Moto (Amateur)\n";
+        std::cout << "2. Auto (Profesional)\n";
+        std::cout << "3. Auto (Amateur)\n";
+        std::cout << "Seleccione el tipo de libreta: ";
         std::cin >> lib;
-        while (lib != -1) {
-            libretas.insert((TipoLibreta)lib);
-            std::cin >> lib;
-        }
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        usuarioOk = controlador->altaConductor(nickname, nombre, contrasena, email, libretas);
-        int agregarVehiculo = 1;
+        libretas.insert((TipoLibreta)lib);
+        std::cout << "Libreta agregada.\n";
+        std::cout << "¿Desea agregar otra libreta? (1: Si, 0: No): ";
+        std::cin >> continuar;
+    }
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    usuarioOk = controlador->altaConductor(nickname, nombre, contrasena, email, libretas);
+    int agregarVehiculo = 1;
         while (usuarioOk == true && agregarVehiculo == 1) {
             std::string matricula, marca, modelo;
             int capacidad, tipo;
