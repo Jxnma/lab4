@@ -439,6 +439,8 @@ void Menu::mostrarMenu() {
                 break;
             case 8:
                 std::cout << "Saliendo del sistema...\n";
+                delete Fabrica::getInstance();
+                delete CargaDatos::getInstance();
                 break;
             default:
                 std::cout << "Opcion invalida.\n";

@@ -19,6 +19,8 @@ CntViaje* CntViaje::getInstance(){
     return instancia;
 }
 CntViaje::~CntViaje() {
+        delete MnjViaje::getInstance();
+        delete MnjVehiculo::getInstancia();
 }
 
 std::set<DTVehiculosConductor> CntViaje::listarVehiculosConductor(std::string nick){
@@ -123,14 +125,16 @@ void CntViaje::eliminarViaje() {
             if (calificado != nullptr)
                 calificado->removeCalificacionRecibida(c);
 
-            delete c;
+            
+                
         }
 
         Pasajero* p = r->getPasajero();
         if (p != nullptr)
             p->removeReserva(r);
 
-        delete r;
+        
+            
     }
 
     v->removeViaje(vi);

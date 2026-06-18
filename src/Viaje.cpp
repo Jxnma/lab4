@@ -12,7 +12,12 @@ Viaje::Viaje(int codigo, DTFecha fecha, std::string origen, std::string destino,
     this->precio = precio;
 }
 
-Viaje::~Viaje() {}
+Viaje::~Viaje() {
+    for (Reserva* r : reservas) {
+        delete r;
+    }
+    reservas.clear();
+}
 
 void Viaje::agregarReserva(Reserva* r) {
     reservas.push_back(r);  

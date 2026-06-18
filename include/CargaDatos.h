@@ -10,7 +10,9 @@ private:
 
 public:
     static CargaDatos* getInstance();
+    ~CargaDatos();
     void cargarDatos();
+
 };
 
 #endif

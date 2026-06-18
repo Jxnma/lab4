@@ -15,6 +15,7 @@ CargaDatos* CargaDatos::instancia = nullptr;
 CargaDatos::CargaDatos() {
     datosCargados = false;
 }
+CargaDatos::~CargaDatos() {}
 
 CargaDatos* CargaDatos::getInstance() {
     if (instancia == nullptr) {

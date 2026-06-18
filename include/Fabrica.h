@@ -16,7 +16,7 @@ private:
 
 public:
     static Fabrica* getInstance();
-
+    ~Fabrica();
     IControladorFechaActual* getIControladorFechaActual();
     ICalificarUsuario* getICalificarUsuario();
     IAltaDeUsuario* getIAltaDeUsuario();

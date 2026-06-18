@@ -9,7 +9,9 @@ CntUsuario* CntUsuario::getInstance(){
     }
     return instancia;
 }
-CntUsuario::~CntUsuario() {}
+CntUsuario::~CntUsuario() {
+    delete MnjUsuario::getInstance();
+}
 
 bool CntUsuario::altaPasajero(std::string nickname, std::string nombre, std::string contrasena, std::string email, std::string ci) {
     MnjUsuario* mu = MnjUsuario::getInstance();                          

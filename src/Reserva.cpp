@@ -1,6 +1,7 @@
 #include "../include/Reserva.h"
 #include "../include/Pasajero.h"
 #include "../include/Viaje.h"
+#include "../include/Calificacion.h"
 
 Reserva::Reserva(int asientosReservados, DTFecha fecha) {
     this->asientosReservados = asientosReservados;
@@ -9,7 +10,11 @@ Reserva::Reserva(int asientosReservados, DTFecha fecha) {
     this->viaje = nullptr;
 }
 
-Reserva::~Reserva() {}
+Reserva::~Reserva() {
+    for (Calificacion* c : calificaciones) {
+        delete c;
+    }
+}
 
 std::vector<DTUsuarioViaje> Reserva::getDTUPasajeros() {
     std::vector<DTUsuarioViaje> resultado;

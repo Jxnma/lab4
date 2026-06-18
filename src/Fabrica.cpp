@@ -16,6 +16,14 @@ Fabrica* Fabrica::getInstance() {
     return instancia;
 }
 
+Fabrica::~Fabrica() {
+    delete CntUsuario::getInstance();
+    delete CntReserva::getInstancia();
+    delete CntViaje::getInstance();
+    delete CntCalificarUsuario::getInstance();
+    delete ControladorFechaActual::getInstance();
+}
+
 IControladorFechaActual* Fabrica::getIControladorFechaActual() {
     return ControladorFechaActual::getInstance();
 }
